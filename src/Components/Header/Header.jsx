@@ -45,9 +45,8 @@ export default function Header() {
 <Youtube size={18} stroke="white" />
 <Twitter size={18} stroke="white" />
   </div>
-  
 
-  <div className='h-[9em] bg-black py-4 px-8 flex flex-wrap justify-between'>
+  <div className='h-[9em] bg-black py-4 px-8 -mt-1 flex flex-wrap justify-between'>
     <Search size={25} stroke="white" />
     <img src={logo} className="h-14"/>
     <div className='flex gap-6'>
