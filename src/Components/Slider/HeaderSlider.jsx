@@ -25,7 +25,7 @@ function HeaderSlider() {
 
         {/* Add more slides as needed */}
       </Swiper>
-      <hr class="h-px my-2 bg-black border-0 dark:bg-black"/>
+      <hr class="h-px mt-2 bg-black border-0 dark:bg-black"/>
 
     </div>
   );

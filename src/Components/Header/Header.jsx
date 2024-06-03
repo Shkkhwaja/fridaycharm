@@ -52,12 +52,12 @@ export default function Header() {
   <div className='h-[4em] md:h-[9em] bg-black py-4 px-8 -mt-1 flex flex-wrap justify-between '>
   <Menu size={25} stroke="white" className='md:hidden -ml-2' />
 
-    <Search size={25} className='relative left-[14.5em] md:left-2' stroke="white" />
+    <Search size={25} className='relative left-[11.5em] md:left-2' stroke="white" />
 
     <img src={logo} className="h-10 -ml-14 -mt-1 md:h-12"/>
     <div className='flex gap-6'>
-    <SquareUser size={25} className='hidden md:block' stroke="white"/>
-    <ShoppingCart size={25} stroke="white" className='mr-5'/>
+    <SquareUser size={25} className='hidden  md:block' stroke="white"/>
+    <ShoppingCart size={25} stroke="white" className='-mr-2'/>
     </div>
     
     <ul className='custom-ul text-white text-[14px] uppercase flex mx-28 py-6 hidden md:flex'>
