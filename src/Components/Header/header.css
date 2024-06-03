@@ -11,6 +11,9 @@
   padding: 10px 10px;
 }
 
+ul li {
+  cursor: pointer;
+}
 .custom-ul li:nth-child(1):after {
   content: '';
   display: block;

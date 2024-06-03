@@ -1,8 +1,12 @@
 import React from 'react'
+import "./header.css"
 
-export default function Niche() {
+
+export default function Niche({ onMouseEnter, onMouseLeave }) {
   return (
-    <div className='h-screen w-full bg-white relative top-[8em] flex'>
+    <div className='h-screen w-full bg-white relative top-[8em] flex' 
+    onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
+    >
     <div className='flex gap-14 px-32 py-16'>
     <div className='h-[36em] w-[14em] px-4 text-gray-800 leading-6'>
       <h2 className='relative -top-6 font-body text-[14px] font-semibold text-gray-800'>A - C</h2>
