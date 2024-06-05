@@ -7,6 +7,7 @@ import img2 from '../../Images/Slider_img/img-2.webp'
 import img3 from '../../Images/Slider_img/img-3.webp'
 import img4 from '../../Images/Slider_img/img-4.webp'
 import img5 from '../../Images/Slider_img/img-5.webp'
+import offer_img from '../../Images/Header_img/offer_img.webp'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -16,6 +17,7 @@ import 'swiper/css/scrollbar';
 
 export default function MainSlider() {
     return (
+      <>
         <Swiper
           // install Swiper modules
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -32,5 +34,12 @@ export default function MainSlider() {
           <SwiperSlide><img src={img4} alt="Slide 4" /></SwiperSlide>
           <SwiperSlide><img src={img5} alt="Slide 5" /></SwiperSlide>
         </Swiper>
+       
+      <div>
+        <img src={offer_img} alt="not" />
+      </div>
+
+        </>
+
       );
 }

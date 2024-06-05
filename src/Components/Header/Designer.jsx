@@ -6,7 +6,7 @@ export default function Designer({ onMouseEnter, onMouseLeave }) {
 
 
   return (
-    <div className="h-screen w-full bg-white relative top-[8em] flex"
+    <div className="h-screen w-full bg-white relative top-[8em] flex "
     onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
     >
       <div className="uppercase text-[15px] p-8 -tracking-tight ">
