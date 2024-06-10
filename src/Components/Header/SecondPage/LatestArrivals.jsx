@@ -21,11 +21,10 @@ export default function LatestArrivals() {
 {/* BEST SELLER */}
 
 
-<img src={bestSeller} alt="best seller" className='mt-20' />
-<img src={bestForMenWomen} alt="best seller for men and women" className='' />
-<img src={hotTrendingBrands} alt="hot trending brand" />
-<video 
-                className="your-custom-class" 
+<img src={bestSeller} alt="best seller" className='mt-20 h-[18em] md:h-auto' />
+<img src={bestForMenWomen} alt="best seller for men and women" className='h-[18em] md:h-auto' />
+<img src={hotTrendingBrands} alt="hot trending brand" className='h-[18em] md:h-auto' />
+<video  
                 data-type="mp4" 
                 src={videoOne} 
                 loop 
@@ -34,7 +33,7 @@ export default function LatestArrivals() {
                 autoPlay
             />
 
-<img src={onlineStore} alt="not visible" />   
+<img src={onlineStore} alt="not visible" className='h-[18em] md:h-auto' />   
          
     </div>
   )

@@ -17,7 +17,7 @@ import 'swiper/css/scrollbar';
 
 export default function MainSlider() {
     return (
-      <>
+     <div >
         <Swiper
           // install Swiper modules
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -39,7 +39,7 @@ export default function MainSlider() {
         <img src={offer_img} alt="not" />
       </div>
 
-        </>
+      </div>
 
       );
 }

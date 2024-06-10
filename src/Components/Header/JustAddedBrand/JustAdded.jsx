@@ -15,6 +15,9 @@ import Gift from '../../../Images/Header_img/Just_Added_img/Gift.webp';
 import videoTwo from '../../../Images/Header_img/Second/videos/videoTwo.mp4'
 import offerPerfume from '../../../Images/Header_img/Just_Added_img/Office-perfumes_12.webp'
 import Miniature from '../../../Images/Header_img/Just_Added_img/17_Miniature.webp'
+import bath from '../../../Images/Header_img/Just_Added_img/01-bath-and-body-care.webp'
+import mist from '../../../Images/Header_img/Just_Added_img/02-mist-and-lotion.webp'
+import Bottom from '../../../Images/Header_img/Just_Added_img/18_Bottom.webp'
 import Bad from '../../Slider/Bad';
 
 export default function JustAdded() {
@@ -36,7 +39,7 @@ export default function JustAdded() {
     return (
         <div className='h-auto w-full'>
             <h2 className='text-center my-10 text-[20px] md:text-[25px]'>Just Added Brand...</h2>      
-            <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-12 my-10 md:mx-32 '>
+            <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-12 my-10 mx-10 md:mx-32 '>
                 {images.map(image => (
                     <div key={image.id} className='flex justify-center'>
                         <img src={image.src} alt={image.alt} className='' />
@@ -44,7 +47,7 @@ export default function JustAdded() {
                 ))}
             </div>
 
-                <img src={Gift} alt="gift" className='mt-20' />
+                <img src={Gift} alt="gift" className='mt-20 h-[18em] md:h-auto' />
                 
                 <video 
                 data-type="mp4" 
@@ -55,11 +58,16 @@ export default function JustAdded() {
                 autoPlay
             />
 
-            <img src={offerPerfume} alt="offer" />
+            <img src={offerPerfume} alt="offer" className=' h-[18em] md:h-auto' />
 
             <Bad />
 
-            <img src={Miniature} alt="not visible" />
+            <img src={Miniature} alt="not visible" className=' h-[18em] md:h-auto' />
+            <div className='flex flex-wrap px-16 py-10 gap-14 '>
+            <img src={bath} alt="not visible"  className='h-[18em] shadow-md'/>
+            <img src={mist} alt="not visible" className='h-[18em] shadow-md' />
+            </div>
+            <img src={Bottom} alt="not visible" className=' h-[18em] md:h-auto' />
         </div>
     );
 }

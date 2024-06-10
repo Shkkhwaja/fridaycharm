@@ -10,7 +10,7 @@ import 'swiper/css/scrollbar';
 
 function HeaderSlider() {
   return (
-    <div className='mt-14 md:mt-[9.5em]'>
+    <div className='mt-14 md:mt-[9.5em] '>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={50}
