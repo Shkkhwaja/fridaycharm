@@ -8,7 +8,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white py-8 px-10">
+    <footer className="bg-black text-white relative bottom-0 py-8 px-10">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 text-[12px] md:mb-0">
           <h3 className="text-[15px] font-bold font-sans">Asreh International</h3>

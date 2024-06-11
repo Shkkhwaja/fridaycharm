@@ -9,6 +9,8 @@ import Deodorant from './Deodorant';
 import HomeFragrance from './HomeFragrance';
 import BathAndBodyCare from './BathAndBodyCare';
 import Minianture from './Minianture';
+import HeaderSlider from '../Slider/HeaderSlider';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [showDesigner, setShowDesigner] = useState(false);
@@ -28,7 +30,8 @@ export default function Header() {
     <div>
       <nav className='h-6 bg-black relative z-20'>
         <div className='text-white text-[11px] flex gap-6 py-1 mx-8 tracking-widest font-thin hidden md:flex'>
-          <h2>Track Your order</h2>
+        <h2>Track Your order</h2>
+          
           <h2>Download Mobile App</h2>
         </div>
         <div className='flex gap-1 absolute right-10 top-1 hidden md:flex'>
@@ -61,7 +64,7 @@ export default function Header() {
           </ul>
         </div>
         {isMobileMenuOpen && (
-          <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col py-4 absolute w-full z-30'>
+          <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30'>
             <a href="#home" className='py-2'>home</a>
             <a href="#designer" className='py-2'>designer perfume</a>
             <a href="#niche" className='py-2'>niche perfumes</a>
@@ -80,6 +83,7 @@ export default function Header() {
       {showHomeFragrance && <HomeFragrance onMouseEnter={() => setShowHomeFragrance(true)} onMouseLeave={() => setShowHomeFragrance(false)} />}
       {showBathAndBodyCare && <BathAndBodyCare onMouseEnter={() => setShowBathAndBodyCare(true)} onMouseLeave={() => setShowBathAndBodyCare(false)} />}
       {showMiniature && <Minianture onMouseEnter={() => setShowMiniature(true)} onMouseLeave={() => setShowMiniature(false)} />}
+        <HeaderSlider />
     </div>
   );
 }
