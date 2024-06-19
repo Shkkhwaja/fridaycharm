@@ -5,7 +5,7 @@ import "./index.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import {RouterProvider, createBrowserRouter} from "react-router-dom"
 import Layout from "./Layout.jsx";
-import Women from "./Section/Women.jsx";
+import Women from "./Section/Women/Women.jsx";
 
 
 const router = createBrowserRouter([

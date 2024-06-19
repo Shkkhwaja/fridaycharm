@@ -65,7 +65,7 @@ export default function Header() {
         </div>
         {isMobileMenuOpen && (
           <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30'>
-            <a href="#home" className='py-2'>home</a>
+            <Link to={''} className='py-2'>home</Link>
             <a href="#designer" className='py-2'>designer perfume</a>
             <a href="#niche" className='py-2'>niche perfumes</a>
             <a href="#middle-eastern" className='py-2'>middle eastern</a>

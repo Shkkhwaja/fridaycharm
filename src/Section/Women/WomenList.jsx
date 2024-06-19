@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../src/Images/Header_img/Second/Adil.jpeg';
+import img from '../../Images/Header_img/Second/Adil.jpeg';
 
 const WomenList = () => {
   const boxes = [...Array(20)].map((_, i) => (

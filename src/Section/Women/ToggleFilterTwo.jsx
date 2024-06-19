@@ -39,9 +39,9 @@ const items = [
 
 const ToggleFilterTwo = () => (
   <Dropdown overlay={<Menu items={items} />}>
-    <a onClick={(e) => e.preventDefault()}>
+    <a className='border-2 px-2 py-3' onClick={(e) => e.preventDefault()}>
       <Space>
-        Hover me
+        Best selling
         <DownOutlined />
       </Space>
     </a>

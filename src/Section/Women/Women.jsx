@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space, Button } from 'antd';
 import WomenList from './WomenList';
-import ToggleFilterTwo from './ToggleFilterTwo';  // Import the new component
+import ToggleFilterTwo from './ToggleFilterTwo';
 
 const items = [
   {
@@ -45,13 +45,13 @@ const Women = () => {
       </div>
       <div className="flex flex-col lg:flex-row">
         <div className="lg:h-[26em] lg:w-[20em] relative my-10">
-          <div className='flex gap-10 mx-10 md:hidden'>
-            <Button className="lg:hidden mb-2" onClick={toggleFilters}>
+          <div className='flex gap-4 mx-6 md:hidden'>
+            <Button className="lg:hidden mb-2 border-2 rounded-[50px] p-5 text-[18px]" onClick={toggleFilters}>
               {showFilters ? 'Hide Filters' : 'Show Filters'}
             </Button>
 
-            <div className={`ml-2 tracking-widest ${showFiltersTwo ? 'block' : 'hidden'} lg:block`}>
-            <ToggleFilterTwo />
+            <div className={`ml-2 mt-2 tracking-widest lg:block`}>
+            <ToggleFilterTwo  />
           </div>
           </div>
 
