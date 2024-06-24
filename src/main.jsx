@@ -6,6 +6,7 @@ import { ThemeProvider } from "@material-tailwind/react";
 import {RouterProvider, createBrowserRouter} from "react-router-dom"
 import Layout from "./Layout.jsx";
 import Women from "./Section/Women/Women.jsx";
+import WomenProductDetails from "./Section/Women/WomenProductDetails.jsx";
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "collection/women",
         element: <Women />
+      },
+      {
+        path: "/product",
+        element: <WomenProductDetails />
       }
     ]
   }

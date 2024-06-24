@@ -17,7 +17,7 @@ function HeaderSlider() {
         slidesPerView={1}
         autoplay={{ delay: 5000 }} 
         onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        
       >
         <SwiperSlide className='text-center text-xs cursor-grab	'><span className='font-bold'>FREE SHIPPING</span> -on all order over Rs 999/-</SwiperSlide>
 
