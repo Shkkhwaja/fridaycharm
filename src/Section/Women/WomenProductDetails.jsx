@@ -1,10 +1,21 @@
-import React from 'react';
+import {useState ,React} from 'react';
 import imgMain from '../../Images/Header_img/Second/Adil.jpeg';
+import AddToCard from './AddToCart';
 
 const WomenProductDetails = () => {
+
+  const [showAddToCard, setShowAddToCard] = useState(false);
+
+  const handleAddToCart = () => {
+    setShowAddToCard(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setShowAddToCard(false);
+  };
   return (
     <div className='w-full flex flex-col md:flex-row'>
-      <img src={imgMain} alt="product img" className='w-full md:w-auto max-h-[20em] md:max-h-[36em] object-contain shadow-md mx-4 my-10 md:my-0' />
+      <img src={imgMain} alt="product img" className='w-full md:w-auto max-h-[20em] md:max-h-[36em] object-contain mx-4 my-10 md:my-0' />
 
       <div className='flex-1 flex flex-col mx-5 text-center md:text-left '>
         <h2 className='text-3xl font-bold text-center md:text-left mt-4 md:mt-4 mx-4'>
@@ -32,8 +43,20 @@ const WomenProductDetails = () => {
         <p>Low stock - 7 items left</p>
       </div>
 
-      <button className='border-2 border-black p-2 rounded-full text-[20px] uppercase tracking-widest my-1'>add to cart</button>
-      <button className='border-2 border-black p-2 rounded-full text-[20px] uppercase tracking-widest my-1 bg-black text-white'>buy it now</button>
+      <button
+        className="border-2 border-black p-2 rounded-full text-[20px] uppercase tracking-widest my-1"
+        onClick={handleAddToCart}
+      >
+        Add to Cart
+      </button>
+      <button
+        className="border-2 border-black p-2 rounded-full text-[20px] uppercase tracking-widest my-1 bg-black text-white"
+
+      >
+        Buy It Now
+      </button>
+      {showAddToCard && <AddToCard  onClose={handleCloseDrawer}/>}
+      
 
 <marquee className='my-4 mx-2 text-[15px] text-black tracking-wide' scrollamount="10" scrolldelay="50">GET Rs.300/- DISCOUNT ON ORDER ABOVE Rs.3500/- USE PROMO : WELCOME10</marquee>
 

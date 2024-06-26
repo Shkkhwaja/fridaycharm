@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import img from '../../Images/Header_img/Second/Adil.jpeg';
 import data from '../../Data/Women.json';
 

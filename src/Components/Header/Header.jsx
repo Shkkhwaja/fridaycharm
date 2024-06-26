@@ -11,6 +11,8 @@ import BathAndBodyCare from './BathAndBodyCare';
 import Minianture from './Minianture';
 import HeaderSlider from '../Slider/HeaderSlider';
 import { Link } from 'react-router-dom';
+import SearchModal from './SearchModal';
+
 
 export default function Header() {
   const [showDesigner, setShowDesigner] = useState(false);
@@ -21,10 +23,19 @@ export default function Header() {
   const [showBathAndBodyCare, setShowBathAndBodyCare] = useState(false);
   const [showMiniature, setShowMiniature] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const handleSearchModal = () => {
+    setShowSearchModal(true)
+  }
+  const handleSearchClose = () => {
+    setShowSearchModal(false)
+
+  }
 
   return (
     <div>
@@ -46,7 +57,7 @@ export default function Header() {
           ) : (
             <X size={25} stroke="white" className='md:hidden -ml-2 cursor-pointer' onClick={toggleMobileMenu} />
           )}
-          <Search size={25} className='relative left-[13.5em] md:left-2' stroke="white" />
+          <Search onClick={handleSearchModal} size={25} className='relative left-[13.5em] md:left-2 cursor-pointer' stroke="white" />
           <img src={logo} className="h-10 mr-14 -mt-1 md:h-12" />
           <div className='flex gap-6'>
             <SquareUser size={25} className='hidden md:block' stroke="white" />
@@ -83,6 +94,9 @@ export default function Header() {
       {showHomeFragrance && <HomeFragrance onMouseEnter={() => setShowHomeFragrance(true)} onMouseLeave={() => setShowHomeFragrance(false)} />}
       {showBathAndBodyCare && <BathAndBodyCare onMouseEnter={() => setShowBathAndBodyCare(true)} onMouseLeave={() => setShowBathAndBodyCare(false)} />}
       {showMiniature && <Minianture onMouseEnter={() => setShowMiniature(true)} onMouseLeave={() => setShowMiniature(false)} />}
+        {showSearchModal &&  <SearchModal onClose={handleSearchClose}/>}
+        
+        
         <HeaderSlider />
     </div>
   );

@@ -3,6 +3,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space, Button } from 'antd';
 import WomenList from './WomenList';
 import ToggleFilterTwo from './ToggleFilterTwo';
+import { Outlet } from 'react-router-dom';
 
 const items = [
   {
@@ -137,6 +138,7 @@ const Women = () => {
         </div>
         <div className="flex-1">
           <WomenList />
+          <Outlet />
         </div>
       </div>
     </>
