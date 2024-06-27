@@ -6,13 +6,16 @@ import Footer from './Components/Footer/Footer';
 import Home from './Components/Header/Home';
 import Women from './Section/Women/Women';
 import WomenProductDetails from './Section/Women/WomenProductDetails';
+import { CartProvider } from "react-use-cart";
 
 
 const App = () => {
   const location = useLocation();
 
   return (
+
     <AnimatePresence>
+      <CartProvider>
     <Header />
     <Routes key={location.pathname} location={location}>
     <Route path='/' element={<Home />} />
@@ -21,6 +24,7 @@ const App = () => {
 
     </Routes>
     <Footer />
+    </CartProvider>
     </AnimatePresence>
 
   )

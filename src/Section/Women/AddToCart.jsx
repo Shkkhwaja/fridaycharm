@@ -1,72 +1,83 @@
-import React, { useState } from 'react';
-import { Button, Drawer } from 'antd';
+import React, { useState, useEffect } from "react";
+import { Button, Drawer } from "antd";
+import imgMain from "../../Images/Header_img/Second/Adil.jpeg";
+import { useCart } from "react-use-cart";
 
 const AddToCard = ({ onClose }) => {
   const [open, setOpen] = useState(true);
 
+  const {
+    isEmpty,
+    totalUniqueItems,
+    items,
+    totalItems,
+    cartTotal,
+    updateItemQuantity,
+    removeItem,
+    emptyCart,
+  } = useCart();
+
+  useEffect(() => {
+    if (totalItems === 0) {
+      setOpen(false);
+      onClose();
+    }
+  }, [totalItems, onClose]);
+
   const handleClose = () => {
     setOpen(false);
-    onClose(); // Notify parent component (optional)
+    onClose();
   };
-
-  // Example array of product data
-  const products = [
-    {
-      id: 1,
-      imageUrl: "https://www.fridaycharm.com/cdn/shop/products/khamrah-main.jpg?v=1659797324&width=180",
-      name: "Lattafa Khamrah Eau De Parfum For Unisex",
-      size: "100ml",
-      price: 2490.00 // Use numeric price for calculations
-    },
-    {
-      id: 2,
-      imageUrl: "https://www.fridaycharm.com/cdn/shop/products/khamrah-main.jpg?v=1659797324&width=180",
-      name: "Lattafa Khamrah Eau De Parfum For Unisex",
-      size: "100ml",
-      price: 2490.00 // Use numeric price for calculations
-    }
-  ];
-
-  // Calculate total price
-  const total = products.reduce((acc, product) => acc + product.price, 0);
-
-  // Ensure total is a number before using toFixed
-  const formattedTotal = typeof total === 'number' ? total.toFixed(2) : '';
 
   return (
     <div className="bg-black">
       <Drawer
         title={
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{ color: 'white', fontSize: '25px', letterSpacing: '4px', textAlign: 'left' }}>Cart</span>
-            <span style={{ position: 'absolute', right: '20px', top: '20px' }}>
-              <span style={{ color: 'white', fontSize: '25px', cursor: 'pointer' }} onClick={handleClose}>X</span>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <span
+              style={{
+                color: "white",
+                fontSize: "25px",
+                letterSpacing: "4px",
+                textAlign: "left",
+              }}
+            >
+              Cart
+            </span>
+            <span style={{ position: "absolute", right: "20px", top: "20px" }}>
+              <span
+                style={{ color: "white", fontSize: "25px", cursor: "pointer" }}
+                onClick={onClose}
+              >
+                X
+              </span>
             </span>
           </div>
         }
         onClose={handleClose}
         visible={open}
-        style={{ backgroundColor: 'black' }}
+        style={{ backgroundColor: "black" }}
         footer={
           <div>
             <hr />
+            
             <div className="my-4 text-white flex justify-between">
               <span className="text-[16px]">Subtotal:</span>
-              <span className="text-[16px]">Rs. {formattedTotal}</span>
+              <span className="text-[16px]">Rs. {cartTotal}</span>
             </div>
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: "center" }}>
               <Button
                 onClick={handleClose}
                 style={{
-                  textTransform: 'uppercase',
-                  padding: '20px 100px',
-                  marginBottom: '1em',
-                  backgroundColor: '#242321',
-                  fontSize: '19px',
-                  letterSpacing: '3px',
-                  color: 'white',
-                  border: '0px',
-                  borderRadius: '50px'
+                  textTransform: "uppercase",
+                  padding: "20px 100px",
+                  marginBottom: "1em",
+                  backgroundColor: "#242321",
+                  fontSize: "19px",
+                  letterSpacing: "3px",
+                  color: "white",
+                  border: "0px",
+                  borderRadius: "50px",
                 }}
               >
                 Check Out
@@ -76,19 +87,25 @@ const AddToCard = ({ onClose }) => {
         }
       >
         <hr />
-        {products.map((product) => (
-          <div key={product.id} className='my-8 text-white grid grid-cols-2'>
-            <img src={product.imageUrl} alt="Product" className='h-[9em] object-cover' />
-            <div className='-ml-4'>
-              <h2 className='mb-1 text-[16px]'>{product.name}</h2>
-              <p className='text-[15px] font-semibold mb-2'>Size: <span className='font-normal text-[13px]'>{product.size}</span></p>
-              <div className='flex gap-4 px-2 h-7 w-[5.5em] border-2 my-2'>
-                <span className='cursor-pointer'>-</span> <span>1</span> <span className='cursor-pointer'>+</span>
+
+        {items.map((item, index) => {
+          return (
+            <div key={index} className="my-8 text-white grid grid-cols-2">
+              <img src={item.img} alt="props" className="h-[9em] w-[9em]" />
+              <div className="-ml-4">
+                <h2 className="mb-1 text-[16px]">{item.title}</h2>
+                <p className="text-[15px] font-semibold mb-2">
+                  Size: <span className="font-normal text-[13px]">100ml</span>
+                </p>
+                <div className="flex gap-4 px-3 h-7 w-[5.5em] border-2 my-2 text-[15px]">
+                  <span className="cursor-pointer" onClick={() => updateItemQuantity(item.id, item.quantity -1)}>-</span> <span>{item.quantity}</span>{" "}
+                  <span className="cursor-pointer" onClick={() => updateItemQuantity(item.id, item.quantity +1)}>+</span>
+                </div>
+                <h2 className="text-right">{item.price}</h2>
               </div>
-              <h2 className='text-right'>Rs. {product.price.toFixed(2)}</h2>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Drawer>
     </div>
   );

@@ -12,6 +12,7 @@ import Minianture from './Minianture';
 import HeaderSlider from '../Slider/HeaderSlider';
 import { Link } from 'react-router-dom';
 import SearchModal from './SearchModal';
+import AddToCard from '../../Section/Women/AddToCart';
 
 
 export default function Header() {
@@ -24,10 +25,13 @@ export default function Header() {
   const [showMiniature, setShowMiniature] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
+  const [showCart, setShowCart] = useState(false)
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+
 
   const handleSearchModal = () => {
     setShowSearchModal(true)
@@ -35,6 +39,14 @@ export default function Header() {
   const handleSearchClose = () => {
     setShowSearchModal(false)
 
+  }
+
+  const handleCart = () => {
+    setShowCart(true)
+  }
+
+  const handleCartClose = () => {
+    setShowCart(false)
   }
 
   return (
@@ -61,7 +73,7 @@ export default function Header() {
           <img src={logo} className="h-10 mr-14 -mt-1 md:h-12" />
           <div className='flex gap-6'>
             <SquareUser size={25} className='hidden md:block' stroke="white" />
-            <ShoppingCart size={25} stroke="white" className='-mr-2' />
+            <ShoppingCart onClick={handleCart} size={25} stroke="white" className='-mr-2 cursor-pointer' />
           </div>
           <ul className='custom-ul text-white text-[14px] uppercase flex mx-28 py-6 hidden md:flex'>
             <li>home</li>
@@ -95,7 +107,7 @@ export default function Header() {
       {showBathAndBodyCare && <BathAndBodyCare onMouseEnter={() => setShowBathAndBodyCare(true)} onMouseLeave={() => setShowBathAndBodyCare(false)} />}
       {showMiniature && <Minianture onMouseEnter={() => setShowMiniature(true)} onMouseLeave={() => setShowMiniature(false)} />}
         {showSearchModal &&  <SearchModal onClose={handleSearchClose}/>}
-        
+        {showCart && <AddToCard onClose={handleCartClose} />}
         
         <HeaderSlider />
     </div>

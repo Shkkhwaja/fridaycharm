@@ -2,26 +2,38 @@ import {useState ,React, useEffect} from 'react';
 import imgMain from '../../Images/Header_img/Second/Adil.jpeg';
 import AddToCard from './AddToCart';
 import { useParams } from 'react-router-dom';
-import data from '../../Data/Women.json'
+import data from '../../Data/data'
+import { useCart } from 'react-use-cart';
+
+
 
 const WomenProductDetails = () => {
   const womId = useParams();
   const [product, setProduct] = useState(null);
   const [showAddToCard, setShowAddToCard] = useState(false);
+  const {addItem} = useCart()
 
   useEffect(() => {
     const productId = parseInt(womId.womId);
-    const productData = data.find(item => item.id === productId);
-    setProduct(productData);
+    const productDataMain = data.productData.find(item => item.id === productId);
+    setProduct(productDataMain);
   }, [womId]);
   
-
 
    if (!product) {
     return <div>Loading...</div>;
   }
 
+
   const handleAddToCart = () => {
+    const item = {
+      id: product.id,
+      title: product.title,
+      price: product.discountedPrice,
+      img: product.imgSrc || imgMain,
+      size: '100ml', // Add other necessary properties if needed
+    };
+    addItem(item);
     setShowAddToCard(true);
   };
 
@@ -70,7 +82,7 @@ const WomenProductDetails = () => {
       >
         Buy It Now
       </button>
-      {showAddToCard && <AddToCard  onClose={handleCloseDrawer}/>}
+      {showAddToCard && <AddToCard onClose={handleCloseDrawer} />}
       
 
 <marquee className='my-4 mx-2 text-[15px] text-black tracking-wide' scrollamount="10" scrolldelay="50">GET Rs.300/- DISCOUNT ON ORDER ABOVE Rs.3500/- USE PROMO : WELCOME10</marquee>

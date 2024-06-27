@@ -18,7 +18,6 @@ export default function Bad() {
           autoplay={{ delay: 2000 }} 
         pagination={{ clickable: true }}
           onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
         >
           <SwiperSlide><img src={deoOne} alt="Slide 1" /></SwiperSlide>
           <SwiperSlide><img src={deoTwo} alt="Slide 2" /></SwiperSlide>

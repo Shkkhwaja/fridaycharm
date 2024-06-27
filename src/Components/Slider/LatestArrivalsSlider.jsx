@@ -35,8 +35,7 @@ export default function LatestArrivalsSlider() {
                 spaceBetween={50}
                 navigation
                 autoplay={{ delay: 2000 }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
+
                 breakpoints={{
                     // when window width is >= 320px
                     320: {

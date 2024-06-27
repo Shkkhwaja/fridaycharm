@@ -1,4 +1,5 @@
-[
+const data = {
+    productData:[
     {
       "id": 1,
       "imgSrc": "https://images.pexels.com/photos/19004226/pexels-photo-19004226/free-photo-of-luxury-perfumes-in-a-bottle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -360,4 +361,6 @@
       "savings": "Save Rs. 10.00"
     }
   ]
-  
+}
+
+export default data;
