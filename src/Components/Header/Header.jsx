@@ -13,6 +13,7 @@ import HeaderSlider from '../Slider/HeaderSlider';
 import { Link } from 'react-router-dom';
 import SearchModal from './SearchModal';
 import AddToCard from '../../Section/Women/AddToCart';
+import { useCart } from "react-use-cart";
 
 
 export default function Header() {
@@ -26,6 +27,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showCart, setShowCart] = useState(false)
+  const {totalItems} = useCart()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -73,10 +75,20 @@ export default function Header() {
           <img src={logo} className="h-10 mr-14 -mt-1 md:h-12" />
           <div className='flex gap-6'>
             <SquareUser size={25} className='hidden md:block' stroke="white" />
-            <ShoppingCart onClick={handleCart} size={25} stroke="white" className='-mr-2 cursor-pointer' />
+            <div className="relative">
+    <ShoppingCart
+      onClick={handleCart}
+      size={25}
+      stroke="white"
+      className="-mr-2 cursor-pointer"
+    />
+    <div className="absolute -top-3 -right-3 bg-white rounded-full w-4 h-4 flex items-center justify-center text-black text-[12px]">
+      {totalItems}
+    </div>
+  </div>
           </div>
           <ul className='custom-ul text-white text-[14px] uppercase flex mx-28 py-6 hidden md:flex'>
-            <li>home</li>
+           <Link to="/"> <li>home</li> </Link>
             <li onMouseEnter={() => setShowDesigner(true)} onMouseLeave={() => setShowDesigner(false)}>designer perfume</li>
             <li onMouseEnter={() => setShowNiche(true)} onMouseLeave={() => setShowNiche(false)}>niche perfumes</li>
             <li onMouseEnter={() => setShowMiddleEastern(true)} onMouseLeave={() => setShowMiddleEastern(false)}>middle eastern</li>

@@ -6,7 +6,7 @@ const data = {
       "title": "Armaf Le Femme",
       "rating": "⭐⭐⭐⭐(18)",
       "originalPrice": "Rs. 6000.00",
-      "discountedPrice": "Rs. 5990.00",
+      "discountedPrice": 5990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -15,7 +15,7 @@ const data = {
       "title": "Swiss Arabian Shaghaf Oud",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 2500.00",
-      "discountedPrice": "Rs. 2490.00",
+      "discountedPrice": 2490.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -24,7 +24,7 @@ const data = {
       "title": "Rasasi Royale Blue",
       "rating": "⭐⭐⭐(5)",
       "originalPrice": "Rs. 1500.00",
-      "discountedPrice": "Rs. 1450.00",
+      "discountedPrice": 1450.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -33,7 +33,7 @@ const data = {
       "title": "Rasasi Sotoor Waaw",
       "rating": "⭐⭐⭐(5)",
       "originalPrice": "Rs. 2000.00",
-      "discountedPrice": "Rs. 1950.00",
+      "discountedPrice": 1950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -42,7 +42,7 @@ const data = {
       "title": "Rasasi La Yuqawam",
       "rating": "⭐⭐⭐⭐⭐(29)",
       "originalPrice": "Rs. 3500.00",
-      "discountedPrice": "Rs. 3450.00",
+      "discountedPrice": 3450.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -51,7 +51,7 @@ const data = {
       "title": "Rasasi Faqat Lil Rijal",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 2000.00",
-      "discountedPrice": "Rs. 1950.00",
+      "discountedPrice": 1950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -60,7 +60,7 @@ const data = {
       "title": "Lattafa Qaed Al Fursan",
       "rating": "⭐⭐⭐⭐⭐(22)",
       "originalPrice": "Rs. 5000.00",
-      "discountedPrice": "Rs. 4950.00",
+      "discountedPrice": 4950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -69,7 +69,7 @@ const data = {
       "title": "Ajmal Sacrifice for Her",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 4000.00",
-      "discountedPrice": "Rs. 3950.00",
+      "discountedPrice": 3950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -78,7 +78,7 @@ const data = {
       "title": "Rasasi Rumz Al Rasasi 9453",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 3000.00",
-      "discountedPrice": "Rs. 2990.00",
+      "discountedPrice": 2990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -87,7 +87,7 @@ const data = {
       "title": "Armaf Tres Nuit",
       "rating": "⭐⭐⭐⭐⭐(29)",
       "originalPrice": "Rs. 6000.00",
-      "discountedPrice": "Rs. 5990.00",
+      "discountedPrice": 5990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -96,7 +96,7 @@ const data = {
       "title": "Lattafa Khamrah Eau De Parfum for Unisex",
       "rating": "⭐⭐⭐⭐⭐(29)",
       "originalPrice": "Rs. 2500.00",
-      "discountedPrice": "Rs. 2490.00",
+      "discountedPrice": 2490.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -105,7 +105,7 @@ const data = {
       "title": "Ajmal Violet Musc",
       "rating": "⭐⭐⭐(5)",
       "originalPrice": "Rs. 5000.00",
-      "discountedPrice": "Rs. 4950.00",
+      "discountedPrice": 4950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -114,7 +114,7 @@ const data = {
       "title": "Lattafa Oud Mood",
       "rating": "⭐⭐⭐⭐(15)",
       "originalPrice": "Rs. 4000.00",
-      "discountedPrice": "Rs. 3950.00",
+      "discountedPrice": 3950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -123,7 +123,7 @@ const data = {
       "title": "Afnan Supremacy Gold",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 1500.00",
-      "discountedPrice": "Rs. 1450.00",
+      "discountedPrice": 1450.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -132,7 +132,7 @@ const data = {
       "title": "Lattafa Velvet Oud",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 5000.00",
-      "discountedPrice": "Rs. 4950.00",
+      "discountedPrice": 4950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -141,7 +141,7 @@ const data = {
       "title": "Armaf Niche Oud",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 3000.00",
-      "discountedPrice": "Rs. 2990.00",
+      "discountedPrice": 2990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -150,7 +150,7 @@ const data = {
       "title": "Ajmal Neutron",
       "rating": "⭐⭐⭐⭐(18)",
       "originalPrice": "Rs. 3500.00",
-      "discountedPrice": "Rs. 3450.00",
+      "discountedPrice": 3450.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -159,7 +159,7 @@ const data = {
       "title": "Swiss Arabian Casablanca",
       "rating": "⭐⭐⭐⭐(15)",
       "originalPrice": "Rs. 2000.00",
-      "discountedPrice": "Rs. 1950.00",
+      "discountedPrice": 1950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -168,7 +168,7 @@ const data = {
       "title": "Ajmal Mukhallat Shams",
       "rating": "⭐⭐⭐⭐⭐(29)",
       "originalPrice": "Rs. 4000.00",
-      "discountedPrice": "Rs. 3950.00",
+      "discountedPrice": 3950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -177,7 +177,7 @@ const data = {
       "title": "Lattafa Perfumes Fakhar",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 5000.00",
-      "discountedPrice": "Rs. 4950.00",
+      "discountedPrice": 4950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -186,7 +186,7 @@ const data = {
       "title": "Armaf Tag Him",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 3000.00",
-      "discountedPrice": "Rs. 2990.00",
+      "discountedPrice": 2990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -195,7 +195,7 @@ const data = {
       "title": "Rasasi Royale Blue",
       "rating": "⭐⭐⭐⭐(15)",
       "originalPrice": "Rs. 2500.00",
-      "discountedPrice": "Rs. 2490.00",
+      "discountedPrice": 2490.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -204,7 +204,7 @@ const data = {
       "title": "Lattafa Ana Abiyedh",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 6000.00",
-      "discountedPrice": "Rs. 5990.00",
+      "discountedPrice": 5990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -213,7 +213,7 @@ const data = {
       "title": "Rasasi Hawas for Him",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 4000.00",
-      "discountedPrice": "Rs. 3950.00",
+      "discountedPrice": 3950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -222,7 +222,7 @@ const data = {
       "title": "Ajmal Wisal Dhahab",
       "rating": "⭐⭐⭐⭐(15)",
       "originalPrice": "Rs. 3000.00",
-      "discountedPrice": "Rs. 2990.00",
+      "discountedPrice": 2990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -231,7 +231,7 @@ const data = {
       "title": "Swiss Arabian Edge",
       "rating": "⭐⭐⭐⭐⭐(22)",
       "originalPrice": "Rs. 5000.00",
-      "discountedPrice": "Rs. 4950.00",
+      "discountedPrice": 4950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -240,7 +240,7 @@ const data = {
       "title": "Ajmal Amber Wood",
       "rating": "⭐⭐⭐⭐⭐(22)",
       "originalPrice": "Rs. 1500.00",
-      "discountedPrice": "Rs. 1450.00",
+      "discountedPrice": 1450.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -249,7 +249,7 @@ const data = {
       "title": "Al Haramain L´Aventure",
       "rating": "⭐⭐⭐⭐⭐(22)",
       "originalPrice": "Rs. 3000.00",
-      "discountedPrice": "Rs. 2990.00",
+      "discountedPrice": 2990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -258,7 +258,7 @@ const data = {
       "title": "Lattafa Raghba",
       "rating": "⭐⭐⭐⭐⭐(22)",
       "originalPrice": "Rs. 4000.00",
-      "discountedPrice": "Rs. 3950.00",
+      "discountedPrice": 3950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -267,7 +267,7 @@ const data = {
       "title": "Ajmal Aristocrat",
       "rating": "⭐⭐⭐⭐⭐(29)",
       "originalPrice": "Rs. 2500.00",
-      "discountedPrice": "Rs. 2490.00",
+      "discountedPrice": 2490.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -276,7 +276,7 @@ const data = {
       "title": "Armaf Le Femme",
       "rating": "⭐⭐⭐⭐(18)",
       "originalPrice": "Rs. 5000.00",
-      "discountedPrice": "Rs. 4950.00",
+      "discountedPrice": 4950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -285,7 +285,7 @@ const data = {
       "title": "Ajmal Violet Musc",
       "rating": "⭐⭐⭐(5)",
       "originalPrice": "Rs. 5000.00",
-      "discountedPrice": "Rs. 4950.00",
+      "discountedPrice": 4950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -294,7 +294,7 @@ const data = {
       "title": "Armaf Vanity Femme Essence",
       "rating": "⭐⭐⭐(5)",
       "originalPrice": "Rs. 2000.00",
-      "discountedPrice": "Rs. 1950.00",
+      "discountedPrice": 1950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -303,7 +303,7 @@ const data = {
       "title": "Rasasi Blue Lady",
       "rating": "⭐⭐⭐(5)",
       "originalPrice": "Rs. 1500.00",
-      "discountedPrice": "Rs. 1450.00",
+      "discountedPrice": 1450.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -312,7 +312,7 @@ const data = {
       "title": "Swiss Arabian Casablanca",
       "rating": "⭐⭐⭐⭐(15)",
       "originalPrice": "Rs. 2000.00",
-      "discountedPrice": "Rs. 1950.00",
+      "discountedPrice": 1950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -321,7 +321,7 @@ const data = {
       "title": "Armaf Club De Nuit Intense",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 4000.00",
-      "discountedPrice": "Rs. 3950.00",
+      "discountedPrice": 3950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -330,7 +330,7 @@ const data = {
       "title": "Swiss Arabian Daeeman",
       "rating": "⭐⭐⭐⭐(18)",
       "originalPrice": "Rs. 2000.00",
-      "discountedPrice": "Rs. 1950.00",
+      "discountedPrice": 1950.00,
       "savings": "Save Rs. 50.00"
     },
     {
@@ -339,7 +339,7 @@ const data = {
       "title": "Armaf Tres Nuit",
       "rating": "⭐⭐⭐⭐⭐(29)",
       "originalPrice": "Rs. 6000.00",
-      "discountedPrice": "Rs. 5990.00",
+      "discountedPrice": 5990.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -348,7 +348,7 @@ const data = {
       "title": "Armaf Le Femme",
       "rating": "⭐⭐⭐(5)",
       "originalPrice": "Rs. 2500.00",
-      "discountedPrice": "Rs. 2490.00",
+      "discountedPrice": 2490.00,
       "savings": "Save Rs. 10.00"
     },
     {
@@ -357,8 +357,8 @@ const data = {
       "title": "Ajmal Aristocrat",
       "rating": "⭐⭐⭐⭐⭐(30)",
       "originalPrice": "Rs. 3000.00",
-      "discountedPrice": "Rs. 2990.00",
-      "savings": "Save Rs. 10.00"
+      "discountedPrice": 2950,
+    "savings": "Save Rs. 10.00"
     }
   ]
 }
