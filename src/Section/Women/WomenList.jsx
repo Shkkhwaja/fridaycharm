@@ -14,7 +14,7 @@ const WomenList = () => {
     <div className='flex flex-wrap justify-center'>
       {women.map((item, index) => (
         <div key={index} className='flex flex-col items-center justify-center h-[22em] w-[12em] text-center mx-4 my-8'>
-          <Link to='/product'>
+          <Link to={`/collection/women/product/${item.id}`}>
             <img
               src={item.imgSrc || img}
               alt="waiting"

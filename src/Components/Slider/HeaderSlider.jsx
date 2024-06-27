@@ -8,8 +8,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+
 function HeaderSlider() {
   return (
+    <>
     <div className='mt-12 md:mt-[9.5em] '>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -23,11 +25,14 @@ function HeaderSlider() {
 
         <SwiperSlide className='text-center text-xs cursor-grab	px-10'><span className='font-bold'>EASY-RETURNS</span> 3 Days Conditional Return on SEALED Products</SwiperSlide>
 
-        {/* Add more slides as needed */}
       </Swiper>
       <hr class="h-px mt-2 bg-black border-0 dark:bg-black"/>
 
     </div>
+
+    
+
+    </>
   );
 }
 

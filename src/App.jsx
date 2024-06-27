@@ -1,16 +1,29 @@
-import React from 'react';
-import MainSlider from './Components/Slider/MainSlider';
-import SecondPage from './Components/Header/SecondPage/SecondPage';
-import LatestArrivals from './Components/Header/SecondPage/LatestArrivals';
-import JustAdded from './Components/Header/JustAddedBrand/JustAdded';
+import React from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
+import Home from './Components/Header/Home';
+import Women from './Section/Women/Women';
+import WomenProductDetails from './Section/Women/WomenProductDetails';
 
-export default function App() {
+
+const App = () => {
+  const location = useLocation();
+
   return (
-    <>
-      <MainSlider />
-      <SecondPage />
-      <LatestArrivals />
-      <JustAdded />
-    </>
-  );
+    <AnimatePresence>
+    <Header />
+    <Routes key={location.pathname} location={location}>
+    <Route path='/' element={<Home />} />
+    <Route path='/collection/women' element={<Women />} />
+    <Route path='/collection/women/product/:womId' element={<WomenProductDetails />} />
+
+    </Routes>
+    <Footer />
+    </AnimatePresence>
+
+  )
 }
+
+export default App

@@ -1,10 +1,25 @@
-import {useState ,React} from 'react';
+import {useState ,React, useEffect} from 'react';
 import imgMain from '../../Images/Header_img/Second/Adil.jpeg';
 import AddToCard from './AddToCart';
+import { useParams } from 'react-router-dom';
+import data from '../../Data/Women.json'
 
 const WomenProductDetails = () => {
-
+  const womId = useParams();
+  const [product, setProduct] = useState(null);
   const [showAddToCard, setShowAddToCard] = useState(false);
+
+  useEffect(() => {
+    const productId = parseInt(womId.womId);
+    const productData = data.find(item => item.id === productId);
+    setProduct(productData);
+  }, [womId]);
+  
+
+
+   if (!product) {
+    return <div>Loading...</div>;
+  }
 
   const handleAddToCart = () => {
     setShowAddToCard(true);
@@ -15,17 +30,17 @@ const WomenProductDetails = () => {
   };
   return (
     <div className='w-full flex flex-col md:flex-row'>
-      <img src={imgMain} alt="product img" className='w-full md:w-auto max-h-[20em] md:max-h-[36em] object-contain mx-4 my-10 md:my-0' />
+      <img src={product.imgSrc || imgMain} alt="product img" className=' md:w-auto max-h-[16em] md:max-h-[30em] object-contain mx-4 my-10 md:my-0' />
 
       <div className='flex-1 flex flex-col mx-5 text-center md:text-left '>
         <h2 className='text-3xl font-bold text-center md:text-left mt-4 md:mt-4 mx-4'>
-          Lattafa Khamrah Eau De Parfum For Unisex
+          {product.title}
         </h2>
-        <span className='mx-4 mt-4'>⭐⭐⭐⭐⭐(10)</span>
+        <span className='mx-4 mt-4'>{product.rating}</span>
         <div className='flex gap-3 my-4 font-thin  md:mx-4'>
-          <p className='line-through'>Rs. 2500.00</p>
-          <p>Rs. 2490.00</p>
-          <p className='text-red-400 text-sm'>Save Rs. 10.00</p>
+          <p className='line-through'>{product.originalPrice}</p>
+          <p>{product.discountedPrice}</p>
+          <p className='text-red-400 text-sm'>{product.savings}</p>
         </div>
         <p className='mx-4 -mt-4'>Tax included. Shipping calculated at checkout.</p>
         <hr className="w-full border-black my-6 h-6 md:h-4" />
