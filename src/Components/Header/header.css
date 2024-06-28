@@ -1,4 +1,4 @@
-.custom-ul {
+/* .custom-ul {
   list-style: none;
   padding: 0;
   z-index: 1;
@@ -51,12 +51,12 @@ ul li {
 .custom-ul li:not(:first-child):hover {
   background-color: #ffff;
   color: black;
-  /* transition: all 0.3s; */
-}
+  transition: all 0.3s;
+} */
 
 
 
-@keyframes slideIn {
+/* @keyframes slideIn {
   0% {
     right: 100%; 
     z-index: 2;
@@ -65,7 +65,7 @@ ul li {
     right: 0;
     z-index: 2; 
   }
-}
+} */
 
 
 
