@@ -61,7 +61,7 @@ export default function Header() {
   };
 
   return (
-    <div>
+    <div className="header-container">
       <nav className='h-6 bg-black relative z-20'>
         <div className='text-white text-[11px] flex gap-6 py-1 mx-8 tracking-widest font-thin hidden md:flex'>
           <h2>Track Your order</h2>
@@ -95,23 +95,23 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <Tabs value={activeTab} className="w-full mt-6 hidden md:block">
-          <TabsHeader
-        className="rounded-none border-b border-white bg-transparent p-2"
-        indicatorProps={{
-          className:
-            "bg-white border-2 border-gray-900 shadow-none rounded-none",
-        }}
-      >
+          <Tabs value={activeTab} className="w-full h-[4em] mt-6 hidden md:block">
+            <TabsHeader
+              className="rounded-none border-b border-white bg-transparent p-2"
+              indicatorProps={{
+                className:
+                  "bg-white border-2 border-gray-900 shadow-none rounded-none",
+              }}
+            >
               {data.map(({ label, value }) => (
                 <Tab key={value} value={value} onClick={() => setActiveTab(value)}
                   className={`text-[13px] tracking-wide ${activeTab === value ? 'text-black' : 'text-white'}`}
                 >
-                  <Link to={``}>{label}</Link>
+                  {label}
                 </Tab>
               ))}
             </TabsHeader>
-            <TabsBody className="w-full h-[120vh] relative -top-[8em]">
+            <TabsBody className="w-full h-screen relative -top-[8em]">
               {data.map(({ value, desc }) => (
                 <TabPanel key={value} value={value} className="w-full h-full">
                   {desc}
@@ -123,7 +123,7 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30'>
             {data.map(({ label, value }) => (
-              <Link to={``} key={value} className='py-2'>{label}</Link>
+              <Link to={`/${value}`} key={value} className='py-2'>{label}</Link>
             ))}
           </div>
         )}
