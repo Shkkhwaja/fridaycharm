@@ -113,7 +113,7 @@ export default function Header() {
           <Youtube size={18} stroke="white" />
           <Twitter size={18} stroke="white" />
         </div>
-        <div className='h-[4em] md:h-[9em] bg-black py-4 px-8 -mt-1 flex flex-wrap justify-between'>
+        <div className='h-[4em] md:h-[9em] bg-black py-4 px-9 -mt-1 flex flex-wrap justify-between'>
           {!isMobileMenuOpen ? (
             <Menu size={25} stroke="white" className='md:hidden -ml-2 cursor-pointer' onClick={toggleMobileMenu} />
           ) : (
@@ -122,29 +122,28 @@ export default function Header() {
           <Search onClick={handleSearchModal} size={25} className='relative left-[13.5em] md:left-2 cursor-pointer' stroke="white" />
           <img src={logo} className="h-10 mr-14 -mt-1 md:h-12" alt="Logo" />
           <div className='flex gap-6'>
-
-          <div className="relative" >
-
-            <SquareUser size={25} className='hidden cursor-pointer md:block' stroke="white" onClick={loginRedirect} />
-            <div className={`${users.length === 0 ? 'hidden' : 'block'}  absolute -top-1 -right-1 bg-red-700 rounded-full w-3 h-3 flex items-center justify-center text-black text-[12px] border-2 border-white`}>
-</div>
-
+          <div className='relative hidden md:block'>
+              <SquareUser size={25} className='cursor-pointer' stroke="white" onClick={loginRedirect} />
+                <div className={`${users.length === 0 ? 'hidden' : 'block'} absolute -top-1 -right-1 bg-red-700 rounded-full w-3 h-3 flex items-center justify-center text-black text-[12px] border-2 border-white`}>
+                </div>
+              
             </div>
-            <div className="relative" >
+
+            <div className="relative">
               <ShoppingCart
                 onClick={handleCart}
                 size={25}
                 stroke="white"
                 className="-mr-2 cursor-pointer"
               />
-              <div className="absolute -top-3 -right-3 bg-white rounded-full w-4 h-4 flex items-center justify-center text-black text-[12px]">
+              <div className="absolute -top-3 -right-3 bg-white rounded-full w-4 h-4 flex items-center justify-center text-black text-[12px] border border-white">
                 {totalItems}
               </div>
             </div>
           </div>
           <Tabs value={activeTab} className="w-full bg-transparent mt-6 hidden md:block">
             <TabsHeader
-              className="rounded-none border-b border-white bg-transparent p-2 "
+              className="rounded-none border-b border-white bg-transparent p-2"
               indicatorProps={{
                 className:
                   "bg-white border-2 border-gray-900 shadow-none rounded-none",
@@ -172,9 +171,9 @@ export default function Header() {
           </Tabs>
         </div>
         {isMobileMenuOpen && (
-          <div className='md:hidden bg-transparent text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30 relative -top-[20em]'>
+          <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30'>
             {data.map(({ label, value }) => (
-              <div key={value} className='py-2 cursor-pointer ' onClick={() => handleTabClick(value)}>
+              <div key={value} className='py-2 cursor-pointer' onClick={() => handleTabClick(value)}>
                 {label}
               </div>
             ))}
@@ -187,3 +186,11 @@ export default function Header() {
     </div>
   );
 }
+
+
+
+
+
+
+
+

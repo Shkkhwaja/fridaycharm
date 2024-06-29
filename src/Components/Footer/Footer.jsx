@@ -20,8 +20,8 @@ const Footer = () => {
         </div>
         
         <div className="mb-4 text-[12px] md:mb-0">
-          <h3 className="text-[15px] font-bold font-sans md:cursor-pointer" onClick={() => toggleSection('legal')}>Legal</h3>
-          <ul className={`mt-2 md:block ${activeSection === 'legal' ? 'block' : 'hidden'}`}>
+          <h3 className="text-[15px] font-bold font-sans text-center md:cursor-pointer" onClick={() => toggleSection('legal')}>Legal</h3>
+          <ul className={`mt-2 md:block ${activeSection === 'legal' ? 'block text-center ' : 'hidden'}`}>
             <li className="mt-2 text-gray-400">About Us</li>
             <li className="mt-2 text-gray-400">Contact Us</li>
             <li className="mt-2 text-gray-400">Cancellation and Refund Policy</li>
@@ -32,8 +32,8 @@ const Footer = () => {
         </div>
         
         <div className="mb-4 text-[12px] md:mb-0">
-          <h3 className="text-[15px] font-bold font-sans md:cursor-pointer" onClick={() => toggleSection('customerCare')}>Customer Care</h3>
-          <ul className={`mt-2 md:block ${activeSection === 'customerCare' ? 'block' : 'hidden'}`}>
+          <h3 className="text-[15px] font-bold font-sans text-center  md:cursor-pointer" onClick={() => toggleSection('customerCare')}>Customer Care</h3>
+          <ul className={`mt-2 md:block ${activeSection === 'customerCare' ? 'block text-center ' : 'hidden'}`}>
             <li className="mt-2 text-gray-400">Register-Create Account</li>
             <li className="mt-2 text-gray-400">Login-My Account</li>
             <li className="mt-2 text-gray-400">Download Our Mobile App</li>
@@ -48,8 +48,8 @@ const Footer = () => {
         </div>
         
         <div className="mb-4 md:mb-0">
-          <h3 className="text-[15px] font-bold font-sans md:cursor-pointer" onClick={() => toggleSection('mainMenu')}>Main Menu</h3>
-          <ul className={`mt-2 text-[12px] md:block ${activeSection === 'mainMenu' ? 'block' : 'hidden'}`}>
+          <h3 className="text-[15px] font-bold font-sans text-center md:cursor-pointer" onClick={() => toggleSection('mainMenu')}>Main Menu</h3>
+          <ul className={`mt-2 text-[12px] md:block ${activeSection === 'mainMenu' ? 'block text-center' : 'hidden'}`}>
             <li className="mt-2 text-gray-400">Home</li>
             <li className="mt-2 text-gray-400">Designer Perfume</li>
             <li className="mt-2 text-gray-400">Niche Perfumes</li>
