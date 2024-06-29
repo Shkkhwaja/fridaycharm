@@ -82,7 +82,7 @@ export default function Header() {
           <Search onClick={handleSearchModal} size={25} className='relative left-[13.5em] md:left-2 cursor-pointer' stroke="white" />
           <img src={logo} className="h-10 mr-14 -mt-1 md:h-12" alt="Logo" />
           <div className='flex gap-6'>
-            <SquareUser size={25} className='hidden md:block' stroke="white" />
+           <Link to="/login"> <SquareUser size={25} className='hidden cursor-pointer md:block' stroke="white" /></Link>
             <div className="relative">
               <ShoppingCart
                 onClick={handleCart}
