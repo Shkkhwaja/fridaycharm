@@ -6,7 +6,7 @@ export default function Designer({ onMouseEnter, onMouseLeave }) {
 
 
   return (
-    <div className="h-screen w-full bg-white relative top-[8em] flex "
+    <div className="h-screen w-full bg-white shadow-md relative top-[8em] flex "
     onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
     >
       <div className="uppercase text-[15px] p-8 -tracking-tight ">
@@ -71,9 +71,7 @@ export default function Designer({ onMouseEnter, onMouseLeave }) {
             <li>Gucci</li>
             <li>Guerlain</li>
             <li>Guess</li>
-            <li>Guy Laroche</li>
-            <li>Hermes</li>
-            <li>Hugo Boss</li>
+
           </ul>
         </div>
 

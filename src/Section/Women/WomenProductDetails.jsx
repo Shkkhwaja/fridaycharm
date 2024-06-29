@@ -1,7 +1,7 @@
 import {useState ,React, useEffect} from 'react';
 import imgMain from '../../Images/Header_img/Second/Adil.jpeg';
 import AddToCard from './AddToCart';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import data from '../../Data/data'
 import { useCart } from 'react-use-cart';
 
@@ -11,6 +11,7 @@ const WomenProductDetails = () => {
   const womId = useParams();
   const [product, setProduct] = useState(null);
   const [showAddToCard, setShowAddToCard] = useState(false);
+  const navigate = useNavigate()
   const {addItem} = useCart()
 
   useEffect(() => {
@@ -36,6 +37,10 @@ const WomenProductDetails = () => {
     addItem(item);
     setShowAddToCard(true);
   };
+
+const handleBuyItNow = () =>{
+  navigate('/login')
+}
 
   const handleCloseDrawer = () => {
     setShowAddToCard(false);
@@ -78,7 +83,7 @@ const WomenProductDetails = () => {
       </button>
       <button
         className="border-2 border-black p-2 rounded-full text-[20px] uppercase tracking-widest my-1 bg-black text-white"
-
+      onClick={handleBuyItNow}
       >
         Buy It Now
       </button>

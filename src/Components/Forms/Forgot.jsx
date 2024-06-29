@@ -8,7 +8,7 @@ const Forgot = () => {
 
   const onFinish = (values) => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userIndex = users.findIndex((user) => user.username === values.username && user.password === values.oldPassword);
+   const userIndex = users.findIndex((user) => user.username === values.username && user.password === values.oldPassword)
 
     if (userIndex === -1) {
       message.error('Invalid username or old password');
@@ -25,12 +25,12 @@ const Forgot = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-cyan-50/90">
       <Form
         form={form}
         name="dependencies"
         autoComplete="off"
-        className="w-full max-w-lg bg-white p-8 shadow-md rounded-lg"
+        className="w-full max-w-lg bg-amber-400/20 p-8 shadow-lg rounded-lg"
         layout="vertical"
         onFinish={onFinish}
       >

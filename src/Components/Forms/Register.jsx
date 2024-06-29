@@ -6,26 +6,25 @@ import { Button, Checkbox, Form, Input, message } from 'antd';
 const Register = () => {
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userExists = users.some((user) => user.username === values.username);
-
-    if (userExists) {
-      message.error('Username already exists');
-      return;
-    }
-
-    users.push(values);
-    localStorage.setItem('users', JSON.stringify(users));
-    message.success('Registration successful!');
-    navigate('/login');
-  };
+const onFinish = (values) =>{
+  const users = JSON.parse(localStorage.getItem('user')) || []
+  const userExists = users.some((user) => user.username === values.username)
+  
+  if(userExists){
+    message.error('Username already exists')
+    return;
+  }
+  users.push(values);
+  localStorage.setItem('users', JSON.stringify(users))
+  message.success('Registration successful!')
+  navigate('/login')
+}
 
   return (
-    <div className="flex justify-center items-center h-screen bg-amber-100">
+    <div className="flex justify-center items-center h-screen bg-cyan-50/90">
       <Form
         name="normal_register"
-        className="w-full max-w-xs bg-amber-200 p-8 shadow-md"
+        className="w-full max-w-xs bg-amber-400/20 p-8 shadow-lg"
         initialValues={{
           remember: true,
         }}

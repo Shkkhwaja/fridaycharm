@@ -4,7 +4,7 @@ import "./header.css"
 
 export default function MiddleEstern({ onMouseEnter, onMouseLeave }) {
   return (
-    <div className="h-screen w-full bg-white relative top-[8em] flex"
+    <div className="h-screen w-full bg-white relative shadow-md top-[8em] flex"
     onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
     >
       <div className="flex gap-16 px-[26em] py-16">
@@ -34,12 +34,7 @@ export default function MiddleEstern({ onMouseEnter, onMouseLeave }) {
   <li>IKOS</li>
   <li>Khalis</li>
   <li>Lattafa</li>
-  <li>Le Chameau</li>
-  <li>Maison Alhambra</li>
-  <li>Maison Fragrance World</li>
-  <li>Naseem Perfume</li>
-  <li>Rasasi</li>
-  <li>Swiss Arabian</li>
+
 </ul>
 
         </div>

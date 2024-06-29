@@ -8,27 +8,29 @@ const Login = () => {
 
   const onFinish = (values) => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find((user) => user.username === values.username && user.password === values.password);
+    const user = users.find((user) => user.username === values.username && user.password === values.password)
 
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      message.success('Login successful!');
-      navigate('/'); // Redirect to dashboard or any other route
-    } else {
-      message.error('Invalid username or password');
+    if(user){
+      localStorage.setItem('currentUser', JSON.stringify(user))
+      message.success('Login Successful!')
+      navigate('/')
+    }else{
+      message.error('Invalid username and password')
     }
-  };
+  }
 
   return (
-    <div className="flex justify-center items-center h-screen bg-amber-100">
+
+    <div className="flex justify-center items-center h-screen bg-cyan-50/90	">
       <Form
         name="normal_login"
-        className="w-full max-w-xs bg-amber-200 p-8 shadow-md"
+        className="w-full max-w-xs bg-amber-400/20 p-8 shadow-lg"
         initialValues={{
           remember: true,
         }}
         onFinish={onFinish}
       >
+        
         <Form.Item
           name="username"
           rules={[

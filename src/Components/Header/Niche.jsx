@@ -4,7 +4,7 @@ import "./header.css"
 
 export default function Niche({ onMouseEnter, onMouseLeave }) {
   return (
-    <div className='h-screen w-full bg-white relative top-[8em] flex' 
+    <div className='h-screen w-full bg-white relative top-[8em] shadow-md flex' 
     onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
     >
     <div className='flex gap-14 px-32 py-16'>

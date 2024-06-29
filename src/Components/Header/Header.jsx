@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Instagram, Facebook, Youtube, Twitter, Search, Menu, SquareUser, ShoppingCart, X } from 'lucide-react';
 import './header.css';
 import logo from '../../Images/Header_img/logo.webp';
@@ -27,7 +27,12 @@ export default function Header() {
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const { totalItems } = useCart();
-  const [activeTab, setActiveTab] = React.useState("home"); // Set initial active tab
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("home"); // Set initial active tab
+  const [tabOpen, setTabOpen] = useState(""); // State to manage open/closed state of tabs
+  const tabsBodyRef = useRef(null); // Ref to access TabsBody element
+
+  const users = JSON.parse(localStorage.getItem('currentUser')) || [];
 
   const data = [
     { label: "HOME", value: "home", desc: "" },
@@ -40,6 +45,7 @@ export default function Header() {
     { label: "MINIATURE", value: "miniature", desc: <Minianture /> }
   ];
 
+  
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -59,6 +65,40 @@ export default function Header() {
   const handleCartClose = () => {
     setShowCart(false);
   };
+
+  const loginRedirect = () => {
+    navigate('/login');
+  };
+
+  // Function to handle tab click
+  const handleTabClick = (value) => {
+    // Toggle the state of tabOpen
+    if (value === "home") {
+      setTabOpen(""); // Close the tab if "HOME" tab is clicked
+      setActiveTab(value); // Set active tab to "home"
+      navigate('/'); // Navigate to home page
+    } else if (tabOpen === value) {
+      setTabOpen(""); // Close the tab if it's already open
+      setActiveTab(value); // Set active tab to clicked tab
+    } else {
+      setTabOpen(value); // Open the tab if it's closed
+      setActiveTab(value); // Set active tab to clicked tab
+    }
+  };
+
+  // Effect to adjust TabsBody height based on content
+  useEffect(() => {
+    if (tabsBodyRef.current) {
+      const height = tabOpen ? `${tabsBodyRef.current.scrollHeight}px` : "0px";
+      tabsBodyRef.current.style.height = height;
+    }
+  }, [tabOpen]);
+
+  // Set "HOME" as default active tab and handle the initial tab state
+  useEffect(() => {
+    setActiveTab("home");
+    setTabOpen(""); // Initially keep the tabs closed
+  }, []);
 
   return (
     <div className="header-container">
@@ -82,8 +122,15 @@ export default function Header() {
           <Search onClick={handleSearchModal} size={25} className='relative left-[13.5em] md:left-2 cursor-pointer' stroke="white" />
           <img src={logo} className="h-10 mr-14 -mt-1 md:h-12" alt="Logo" />
           <div className='flex gap-6'>
-           <Link to="/login"> <SquareUser size={25} className='hidden cursor-pointer md:block' stroke="white" /></Link>
-            <div className="relative">
+
+          <div className="relative" >
+
+            <SquareUser size={25} className='hidden cursor-pointer md:block' stroke="white" onClick={loginRedirect} />
+            <div className={`${users.length === 0 ? 'hidden' : 'block'}  absolute -top-1 -right-1 bg-red-700 rounded-full w-3 h-3 flex items-center justify-center text-black text-[12px] border-2 border-white`}>
+</div>
+
+            </div>
+            <div className="relative" >
               <ShoppingCart
                 onClick={handleCart}
                 size={25}
@@ -95,35 +142,41 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <Tabs value={activeTab} className="w-full h-[4em] mt-6 hidden md:block">
+          <Tabs value={activeTab} className="w-full bg-transparent mt-6 hidden md:block">
             <TabsHeader
-              className="rounded-none border-b border-white bg-transparent p-2"
+              className="rounded-none border-b border-white bg-transparent p-2 "
               indicatorProps={{
                 className:
                   "bg-white border-2 border-gray-900 shadow-none rounded-none",
               }}
             >
               {data.map(({ label, value }) => (
-                <Tab key={value} value={value} onClick={() => setActiveTab(value)}
+                <Tab
+                  key={value}
+                  value={value}
+                  onClick={() => handleTabClick(value)}
                   className={`text-[13px] tracking-wide ${activeTab === value ? 'text-black' : 'text-white'}`}
+                  style={{ color: activeTab === value ? '#000000' : '#ffffff' }}
                 >
                   {label}
                 </Tab>
               ))}
             </TabsHeader>
-            <TabsBody className="w-full h-screen relative -top-[8em]">
+            <TabsBody ref={tabsBodyRef} className="w-full overflow-hidden relative transition-height duration-300">
               {data.map(({ value, desc }) => (
-                <TabPanel key={value} value={value} className="w-full h-full">
-                  {desc}
+                <TabPanel key={value} value={value} className={`w-full ${tabOpen === value || value === "home" ? 'relative bottom-[8em]' : 'h-0 overflow-hidden'}`}>
+                  {tabOpen === value && desc}
                 </TabPanel>
               ))}
             </TabsBody>
           </Tabs>
         </div>
         {isMobileMenuOpen && (
-          <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30'>
+          <div className='md:hidden bg-transparent text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30 relative -top-[20em]'>
             {data.map(({ label, value }) => (
-              <Link to={`/${value}`} key={value} className='py-2'>{label}</Link>
+              <div key={value} className='py-2 cursor-pointer ' onClick={() => handleTabClick(value)}>
+                {label}
+              </div>
             ))}
           </div>
         )}
