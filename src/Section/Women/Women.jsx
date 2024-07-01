@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space, Button } from 'antd';
 import WomenList from './WomenList';
@@ -25,6 +25,15 @@ const items = [
 const Women = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [showFiltersTwo, setShowFiltersTwo] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    })
+  },[])
+
 
   const toggleFilters = () => {
     setShowFilters(!showFilters);

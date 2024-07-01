@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Button, Drawer } from "antd";
 import imgMain from "../../Images/Header_img/Second/Adil.jpeg";
 import { useCart } from "react-use-cart";
+import {useNavigate} from "react-router-dom";
+
 
 const AddToCard = ({ onClose }) => {
   const [open, setOpen] = useState(true);
-
+  const navigate = useNavigate();
   const {
     isEmpty,
     totalUniqueItems,
@@ -25,8 +27,10 @@ const AddToCard = ({ onClose }) => {
   }, [totalItems, onClose]);
 
   const handleClose = () => {
-    setOpen(false);
-    onClose();
+    onClose()
+navigate('/login')
+
+
   };
 
   return (
@@ -66,7 +70,7 @@ const AddToCard = ({ onClose }) => {
               <span className="text-[16px]">Rs. {cartTotal}</span>
             </div>
             <div style={{ textAlign: "center" }}>
-              <Button
+            <Button
                 onClick={handleClose}
                 style={{
                   textTransform: "uppercase",

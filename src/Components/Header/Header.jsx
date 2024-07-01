@@ -32,6 +32,15 @@ export default function Header() {
   const [tabOpen, setTabOpen] = useState(""); // State to manage open/closed state of tabs
   const tabsBodyRef = useRef(null); // Ref to access TabsBody element
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    })
+  },[])
+
+
   const users = JSON.parse(localStorage.getItem('currentUser')) || [];
 
   const data = [

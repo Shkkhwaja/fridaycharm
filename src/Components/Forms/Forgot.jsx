@@ -26,6 +26,7 @@ const Forgot = () => {
 
   return (
     <div className="flex justify-center items-center h-screen bg-cyan-50/90">
+          <h2 className='absolute top-[8em] text-2xl md:text-3xl font-bold text-blue-gray-500 tracking-widest uppercase'>Forgot</h2>
       <Form
         form={form}
         name="dependencies"

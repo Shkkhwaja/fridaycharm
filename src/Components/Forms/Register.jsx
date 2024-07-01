@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, message } from 'antd';
 
 const Register = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 100,
+      left: 0,
+      behavior: "smooth"
+    })
+  },[])
   const navigate = useNavigate();
 
 const onFinish = (values) =>{
@@ -22,6 +29,7 @@ const onFinish = (values) =>{
 
   return (
     <div className="flex justify-center items-center h-screen bg-cyan-50/90">
+          <h2 className='absolute top-[8em] text-2xl md:text-3xl font-bold text-blue-gray-500 tracking-widest uppercase'>Register</h2>
       <Form
         name="normal_register"
         className="w-full max-w-xs bg-amber-400/20 p-8 shadow-lg"
