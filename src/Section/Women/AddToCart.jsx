@@ -26,11 +26,16 @@ const AddToCard = ({ onClose }) => {
     }
   }, [totalItems, onClose]);
 
+const handleCloseMain = () => {
+  setOpen(false);
+  onClose();
+}
+
   const handleClose = () => {
-    onClose()
-navigate('/login')
-
-
+    const checkUser = window.localStorage.getItem('currentUser')
+    !checkUser ? navigate('/login') : navigate('/checkout')
+    setOpen(false);
+    onClose();
   };
 
   return (
@@ -58,7 +63,7 @@ navigate('/login')
             </span>
           </div>
         }
-        onClose={handleClose}
+        onClose={handleCloseMain}
         visible={open}
         style={{ backgroundColor: "black" }}
         footer={
@@ -99,7 +104,7 @@ navigate('/login')
               <div className="-ml-4">
                 <h2 className="mb-1 text-[16px]">{item.title}</h2>
                 <p className="text-[15px] font-semibold mb-2">
-                  Size: <span className="font-normal text-[13px]">100ml</span>
+                  Size: <span className="font-normal text-[13px]">{item.size}</span>
                 </p>
                 <div className="flex gap-4 px-3 h-7 w-[5.5em] border-2 my-2 text-[15px]">
                   <span className="cursor-pointer" onClick={() => updateItemQuantity(item.id, item.quantity -1)}>-</span> <span>{item.quantity}</span>{" "}

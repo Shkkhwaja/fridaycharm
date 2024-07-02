@@ -10,10 +10,10 @@ export default function Minianture({ onMouseEnter, onMouseLeave }) {
             onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
             >
           <ul>
-            <li>Designer Perfume Vials</li>
+            <li>Designer Perfume</li>
             <li>Niche Perfume Vials</li>
-            <li>Designer Perfume Miniatures</li>
-            <li>Niche Perfume Miniature</li>
+            <li>Designer Perfume </li>
+            <li>Niche Perfume </li>
             <li>Mini Travel Set</li>
           </ul>
         </div>

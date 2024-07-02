@@ -3,6 +3,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space, Button } from 'antd';
 import WomenList from './WomenList';
 import ToggleFilterTwo from './ToggleFilterTwo';
+import ArmafData from '../../Data/armaf-products.json'
 
 const items = [
   {
@@ -23,8 +24,18 @@ const items = [
 ];
 
 const Women = () => {
+
+  const [data, setData] = useState({})
   const [showFilters, setShowFilters] = useState(false);
   const [showFiltersTwo, setShowFiltersTwo] = useState(false);
+
+  useEffect(() => {
+    setData(ArmafData);
+  }, []);
+
+  useEffect(() => {
+    console.log('armaf', data.products);
+  }, [data]);
 
   useEffect(() => {
     window.scrollTo({

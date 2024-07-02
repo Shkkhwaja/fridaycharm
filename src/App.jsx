@@ -10,6 +10,7 @@ import { CartProvider } from "react-use-cart";
 import Login from './Components/Forms/Login'
 import Forgot from './Components/Forms/Forgot'
 import Register from './Components/Forms/Register'
+import CheckOut from './Section/Women/CheckOut';
 
 
 const App = () => {
@@ -27,7 +28,9 @@ const App = () => {
     <Route path='/register' element={<Register />} />
     <Route path='/forgot/password' element={<Forgot />} />
     <Route path='/collection/women/product/:womId' element={<WomenProductDetails />} />
+    <Route path='/checkout' element={<CheckOut />} />
     </Routes>
+    
     <Footer />
     </CartProvider>
     </AnimatePresence>

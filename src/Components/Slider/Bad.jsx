@@ -1,13 +1,30 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Navigation, Pagination, Scrollbar, A11y,Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import deoOne from '../../Images/Slider_img/14_Deo.webp'
+import deoOneMob from '../../Images/Slider_img/14_Deo-Mob.webp'
 import deoTwo from '../../Images/Slider_img/13_Deo-Sticks.webp'
+import deoTwoMob from '../../Images/Slider_img/13_Deo-Sticks-Mob.webp'
 
 
 export default function Bad() {
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 789)
+    }
+    handleResize();
+  
+    window.addEventListener('resize',handleResize)
+  
+    return () => window.removeEventListener('resize', handleResize)
+  },[])
+
+
   return (
     <div>
               <Swiper
@@ -18,8 +35,8 @@ export default function Bad() {
           autoplay={{ delay: 2000 }} 
         pagination={{ clickable: true }}
         >
-          <SwiperSlide><img src={deoOne} alt="Slide 1" /></SwiperSlide>
-          <SwiperSlide><img src={deoTwo} alt="Slide 2" /></SwiperSlide>
+          <SwiperSlide><img src={isMobile ? deoOneMob : deoOne} alt="Slide 1" /></SwiperSlide>
+          <SwiperSlide><img src={isMobile ? deoTwoMob : deoTwo} alt="Slide 2" /></SwiperSlide>
 
         </Swiper>
     </div>

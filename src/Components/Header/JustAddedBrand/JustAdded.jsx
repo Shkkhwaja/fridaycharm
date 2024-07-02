@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react'
 import addImg_1 from '../../../Images/Header_img/Just_Added_img/Nicolai-perfumes.webp';
 import addImg_2 from '../../../Images/Header_img/Just_Added_img/boucheron-perfumes.webp';
 import addImg_3 from '../../../Images/Header_img/Just_Added_img/sospiro.webp';
@@ -12,15 +12,33 @@ import addImg_10 from '../../../Images/Header_img/Just_Added_img/serge-lutens-ba
 import addImg_11 from '../../../Images/Header_img/Just_Added_img/unique-luxury-banner.webp';
 import addImg_12 from '../../../Images/Header_img/Just_Added_img/Ahmed-Al-Maghribi-banner.webp';
 import Gift from '../../../Images/Header_img/Just_Added_img/Gift.webp';
+import GiftMob from '../../../Images/Header_img/Just_Added_img/10_gIFTS-Mob.webp';
 import videoTwo from '../../../Images/Header_img/Second/videos/videoTwo.mp4'
 import offerPerfume from '../../../Images/Header_img/Just_Added_img/Office-perfumes_12.webp'
+import offerPerfumeMob from '../../../Images/Header_img/Just_Added_img/12_Office-perfumes-Mob.webp'
 import Miniature from '../../../Images/Header_img/Just_Added_img/17_Miniature.webp'
+import MiniatureMob from '../../../Images/Header_img/Just_Added_img/17_Miniature-MOB.webp'
 import bath from '../../../Images/Header_img/Just_Added_img/01-bath-and-body-care.webp'
 import mist from '../../../Images/Header_img/Just_Added_img/02-mist-and-lotion.webp'
 import Bottom from '../../../Images/Header_img/Just_Added_img/18_Bottom.webp'
 import Bad from '../../Slider/Bad';
 
 export default function JustAdded() {
+
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 789)
+      }
+      handleResize();
+    
+      window.addEventListener('resize',handleResize)
+    
+      return () => window.removeEventListener('resize', handleResize)
+    },[])
+
+
     const images = [
         { id: 1, src: addImg_1, alt: 'Nicolai Perfumes' },
         { id: 2, src: addImg_2, alt: 'Boucheron Perfumes' },
@@ -47,7 +65,7 @@ export default function JustAdded() {
                 ))}
             </div>
 
-                <img src={Gift} alt="gift" className='mt-20 h-[18em] md:h-auto' />
+                <img src={isMobile ? GiftMob : Gift} alt="gift" className='mt-20  md:h-auto' />
                 
                 <video 
                 data-type="mp4" 
@@ -58,16 +76,16 @@ export default function JustAdded() {
                 autoPlay
             />
 
-            <img src={offerPerfume} alt="offer" className=' h-[18em] md:h-auto' />
+            <img src={isMobile ? offerPerfumeMob : offerPerfume} alt="offer" className='  md:h-auto' />
 
             <Bad />
 
-            <img src={Miniature} alt="not visible" className=' h-[18em] md:h-auto' />
+            <img src={isMobile ? MiniatureMob :Miniature} alt="not visible" className='  md:h-auto' />
             <div className='flex flex-wrap px-16 py-10 gap-14 '>
-            <img src={bath} alt="not visible"  className='h-[18em] shadow-md'/>
-            <img src={mist} alt="not visible" className='h-[18em] shadow-md' />
+            <img src={bath} alt="not visible"  className=' shadow-md'/>
+            <img src={mist} alt="not visible" className='shad   ow-md' />
             </div>
-            <img src={Bottom} alt="not visible" className=' h-[18em] md:h-auto' />
+            <img src={Bottom} alt="not visible" className='h-auto' />
         </div>
     );
 }

@@ -1,12 +1,31 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import LatestArrivalsSlider from '../../Slider/LatestArrivalsSlider'
 import bestSeller from '../../../Images/Header_img/Second/Best-Seller.webp'
+import bestSellerMob from '../../../Images/Header_img/Second/05_BEST-SELLER-Mob.webp'
 import bestForMenWomen from '../../../Images/Header_img/Second/Best-perfume-men-women.webp'
+import bestForMenWomenMob from '../../../Images/Header_img/Second/06_DESIGNER-VS-NICHE-MOB.webp'
 import hotTrendingBrands from '../../../Images/Header_img/Second/Hot-Trending-Brands.webp'
+import hotTrendingBrandsMob from '../../../Images/Header_img/Second/07_Hot-Trending-Brands-Mob.webp'
 import videoOne from '../../../Images/Header_img/Second/videos/videoOne.mp4'
 import onlineStore from '../../../Images/Header_img/Second/onlineStore.webp'
+import onlineStoreMob from '../../../Images/Header_img/Second/09_Arabian-Perfumes-Mob.webp'
 
 export default function LatestArrivals() {
+
+
+const [isMobile, setIsMobile] = useState(false)
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 789)
+  }
+  handleResize();
+
+  window.addEventListener('resize',handleResize)
+
+  return () => window.removeEventListener('resize', handleResize)
+},[])
+
   return (
     <div className='h-auto w-full'>
         <h2 className='text-center text-[30.6px] text-gray-900'>Latest Arrivals</h2>
@@ -21,9 +40,9 @@ export default function LatestArrivals() {
 {/* BEST SELLER */}
 
 
-<img src={bestSeller} alt="best seller" className='mt-20 h-[18em] md:h-auto' />
-<img src={bestForMenWomen} alt="best seller for men and women" className='h-[18em] md:h-auto' />
-<img src={hotTrendingBrands} alt="hot trending brand" className='h-[18em] md:h-auto' />
+<img src={isMobile ? bestSellerMob : bestSeller} alt="best seller" className='mt-20  md:h-auto' />
+<img src={isMobile ? bestForMenWomenMob : bestForMenWomen} alt="best seller for men and women" className=' md:h-auto' />
+<img src={isMobile ? hotTrendingBrandsMob : hotTrendingBrands} alt="hot trending brand" className=' md:h-auto' />
 <video  
                 data-type="mp4" 
                 src={videoOne} 
@@ -33,7 +52,7 @@ export default function LatestArrivals() {
                 autoPlay
             />
 
-<img src={onlineStore} alt="not visible" className='h-[18em] md:h-auto' />   
+<img src={isMobile ? onlineStoreMob : onlineStore} alt="not visible" className=' md:h-auto' />   
          
     </div>
   )
