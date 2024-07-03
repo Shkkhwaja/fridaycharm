@@ -2,9 +2,17 @@ import React from 'react';
 import Men from '../../../Images/Header_img/Second/Men.webp';
 import Women from '../../../Images/Header_img/Second/Women.webp';
 import NewArrival from '../../../Images/Header_img/Second/New-Arrivals.webp';
-import {Link} from 'react-router-dom'
+import NewArrivalMob from '../../../Images/Header_img/Second/New-Arrivals-Mob.webp';
+import {Link, useNavigate} from 'react-router-dom'
 
 export default function SecondPage() {
+  const navigate = useNavigate();
+
+const  handlearrival  = () => {
+    navigate('/page/minianture')
+}
+
+
   return (
     <>
     <div className='w-full h-screen p-8 flex items-center justify-center'>
@@ -21,7 +29,9 @@ export default function SecondPage() {
       </div>
     </div>
 
-<img src={NewArrival} alt="new Arrival" className='my-10'/>
+    <img src={NewArrival} alt="new Arrival" onClick={handlearrival} className='my-10 hidden cursor-pointer md:block'/>
+<img src={NewArrivalMob} alt="new Arrival" onClick={handlearrival} className='my-10 md:hidden'/>
+
 
     </>
     

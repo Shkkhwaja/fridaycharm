@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import data from '../../Data/data'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
@@ -10,24 +11,16 @@ import 'swiper/css/scrollbar';
 import img from '../../Images/Header_img/Second/Adil.jpeg';
 
 export default function LatestArrivalsSlider() {
-    const products = [
-        { id: 1, image: img, name: 'Product 1', price: 20, discount: 5 },
-        { id: 2, image: img, name: 'Product 2', price: 30, discount: 10 },
-        { id: 3, image: img, name: 'Product 3', price: 25, discount: 8 },
-        { id: 4, image: img, name: 'Product 4', price: 40, discount: 12 },
-        { id: 5, image: img, name: 'Product 5', price: 35, discount: 15 },
-        { id: 6, image: img, name: 'Product 6', price: 22, discount: 6 },
-        { id: 7, image: img, name: 'Product 7', price: 33, discount: 9 },
-        { id: 8, image: img, name: 'Product 8', price: 28, discount: 7 },
-        { id: 9, image: img, name: 'Product 9', price: 45, discount: 14 },
-        { id: 10, image: img, name: 'Product 10', price: 38, discount: 11 },
-        { id: 11, image: img, name: 'Product 11', price: 29, discount: 10 },
-        { id: 12, image: img, name: 'Product 12', price: 27, discount: 8 },
-        { id: 13, image: img, name: 'Product 13', price: 32, discount: 10 },
-        { id: 14, image: img, name: 'Product 14', price: 24, discount: 6 },
-        { id: 15, image: img, name: 'Product 15', price: 31, discount: 9 },
-    ];
+    const [products, setProducts] = useState([]);
 
+    useEffect(() => {
+        // Simulating fetching data, replace with actual data fetching logic
+        setProducts(data.productData.slice(10,25)); // Assuming data is an array of objects
+    }, []);
+
+    useEffect(() => {
+        console.log("Products: ", products);
+    }, [products]);
     return (
         <div className="my-10">
             <Swiper
@@ -58,14 +51,14 @@ export default function LatestArrivalsSlider() {
                 {products.map((product) => (
                     <SwiperSlide key={product.id}>
                         <div className="flex flex-col items-center justify-center text-center">
-                            <img src={product.image} alt={`Slide ${product.id}`} />
+                            <img src={product.image && product.image.src || img} className='h-[18em] w-auto' alt={`Slide ${product.id}`} />
                             <div className="lg:text-center mt-4">
-                                <h3>{product.name}</h3>
+                                <h3>{product.title}</h3>
                                 <div className='flex items-center justify-center'>
                                     <span className="mr-2"><s>Rs. 460</s></span>
-                                    <p>Price: ${product.price}</p>
+                                    <p>Price: {product.variants[0].price || "1000"}</p>
                                 </div>
-                                <p className='text-red-600'>Discount: {product.discount}% off</p>
+                                <p className='text-red-600'>Discount:  { NaN ? "10.00" : ((product.variants[0].compare_at_price - product.variants[0].price) / product.variants[0].compare_at_price * 100).toFixed(2)}% off</p>
                             </div>
                         </div>
                     </SwiperSlide>

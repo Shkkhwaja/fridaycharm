@@ -11,6 +11,13 @@ import Login from './Components/Forms/Login'
 import Forgot from './Components/Forms/Forgot'
 import Register from './Components/Forms/Register'
 import CheckOut from './Section/Women/CheckOut';
+import DeodorantPage from './Components/HeaderPages/DeodorantPage';
+import NichePage from './Components/HeaderPages/NichePage';
+import MiddleEsternPage from './Components/HeaderPages/MiddleEsternPage';
+import DesignerPage from './Components/HeaderPages/DesignerPage';
+import HomeFragrancePage from './Components/HeaderPages/HomeFragrancePage';
+import BathAndBodyCarePage from './Components/HeaderPages/BathAndBodyCarePage';
+import MinianturePage from './Components/HeaderPages/MinianturePage';
 
 
 const App = () => {
@@ -29,7 +36,16 @@ const App = () => {
     <Route path='/forgot/password' element={<Forgot />} />
     <Route path='/collection/women/product/:womId' element={<WomenProductDetails />} />
     <Route path='/checkout' element={<CheckOut />} />
+    <Route path='page/designer' element={<DesignerPage />} />
+    <Route path='page/niche' element={<NichePage />} />
+    <Route path='page/middleestern' element={<MiddleEsternPage />} />
+    <Route path='page/deodorant' element={<DeodorantPage />} />
+    <Route path='page/homefragrance' element={<HomeFragrancePage />} />
+    <Route path='page/bathandbodycare' element={<BathAndBodyCarePage />} />
+    <Route path='page/minianture' element={<MinianturePage />} />
+    
     </Routes>
+    
     
     <Footer />
     </CartProvider>

@@ -76,15 +76,16 @@ export default function JustAdded() {
                 autoPlay
             />
 
-            <img src={isMobile ? offerPerfumeMob : offerPerfume} alt="offer" className='  md:h-auto' />
+            <img src={isMobile ? offerPerfumeMob : offerPerfume} alt="offer" className='w-full  md:h-auto' />
 
             <Bad />
 
-            <img src={isMobile ? MiniatureMob :Miniature} alt="not visible" className='  md:h-auto' />
-            <div className='flex flex-wrap px-16 py-10 gap-14 '>
-            <img src={bath} alt="not visible"  className=' shadow-md'/>
-            <img src={mist} alt="not visible" className='shad   ow-md' />
-            </div>
+            <img src={isMobile ? MiniatureMob : Miniature} alt="not visible" className=' w-full md:h-auto' />
+            <div className='flex flex-wrap px-4 py-10 gap-4'>
+    <img src={bath} alt="not visible" className='shadow-md h-auto md:h-[20em]'/>
+    <img src={mist} alt="not visible" className='shadow-md h-auto md:h-[20em]'/>
+</div>
+
             <img src={Bottom} alt="not visible" className='h-auto' />
         </div>
     );

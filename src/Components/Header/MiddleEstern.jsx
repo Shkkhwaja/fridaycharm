@@ -4,7 +4,7 @@ import "./header.css"
 
 export default function MiddleEstern({ onMouseEnter, onMouseLeave }) {
   return (
-    <div className="h-screen w-full bg-white relative shadow-md top-[8em] flex"
+    <div className="h-screen w-auto bg-white relative shadow-md top-[8em] flex"
     onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
     >
       <div className="flex gap-16 px-[26em] py-16">

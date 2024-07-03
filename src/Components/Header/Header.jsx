@@ -28,33 +28,31 @@ export default function Header() {
   const [showCart, setShowCart] = useState(false);
   const { totalItems } = useCart();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("home"); // Set initial active tab
-  const [tabOpen, setTabOpen] = useState(""); // State to manage open/closed state of tabs
-  const tabsBodyRef = useRef(null); // Ref to access TabsBody element
+  const [activeTab, setActiveTab] = useState("home");
+  const [tabOpen, setTabOpen] = useState("");
+  const tabsBodyRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth"
-    })
-  },[])
-
+    });
+  }, []);
 
   const users = JSON.parse(localStorage.getItem('currentUser')) || [];
 
   const data = [
-    { label: "HOME", value: "home", desc: "" },
-    { label: "DESIGNER PERFUME", value: "designer-perfume", desc: <Designer /> },
-    { label: "NICHE PERFUMES", value: "niche-perfumes", desc: <Niche /> },
-    { label: "MIDDLE EASTERN", value: "middle-eastern", desc: <MiddleEstern /> },
-    { label: "DEODORANT", value: "deodorant", desc: <Deodorant /> },
-    { label: "HOME FRAGRANCE", value: "home-fragrance", desc: <HomeFragrance /> },
-    { label: "BATH & BODY CARE", value: "bath-body-care", desc: <BathAndBodyCare /> },
-    { label: "MINIATURE", value: "miniature", desc: <Minianture /> }
+    { label: "HOME", value: "home", desc: "", path: "/" },
+    { label: "DESIGNER PERFUME", value: "designer-perfume", desc: <Designer />, path: "/page/designer" },
+    { label: "NICHE PERFUME", value: "niche-perfumes", desc: <Niche />, path: "/page/niche" },
+    { label: "MIDDLE EASTERN", value: "middle-eastern", desc: <MiddleEstern />, path: "/page/middleestern" },
+    { label: "DEODORANT", value: "deodorant", desc: <Deodorant />, path: "/page/deodorant" },
+    { label: "HOME FRAGRANCE", value: "home-fragrance", desc: <HomeFragrance />, path: "/page/homefragrance" },
+    { label: "BATH & BODY CARE", value: "bath-body-care", desc: <BathAndBodyCare />, path: "/page/bathandbodycare" },
+    { label: "MINIATURE", value: "miniature", desc: <Minianture />, path: "/page/minianture" }
   ];
 
-  
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -79,23 +77,28 @@ export default function Header() {
     navigate('/login');
   };
 
-  // Function to handle tab click
-  const handleTabClick = (value) => {
-    // Toggle the state of tabOpen
+  const handleTabClick = (value, path) => {
     if (value === "home") {
-      setTabOpen(""); // Close the tab if "HOME" tab is clicked
-      setActiveTab(value); // Set active tab to "home"
-      navigate('/'); // Navigate to home page
+      setTabOpen("");
+      setActiveTab(value);
+      navigate('/');
     } else if (tabOpen === value) {
-      setTabOpen(""); // Close the tab if it's already open
-      setActiveTab(value); // Set active tab to clicked tab
+      setTabOpen("");
+      setActiveTab(value);
+      navigate(path);
     } else {
-      setTabOpen(value); // Open the tab if it's closed
-      setActiveTab(value); // Set active tab to clicked tab
+      setTabOpen(value);
+      setActiveTab(value);
+      navigate(path);
     }
   };
 
-  // Effect to adjust TabsBody height based on content
+  const handleClickOutside = (event) => {
+    if (tabsBodyRef.current && !tabsBodyRef.current.contains(event.target)) {
+      setTabOpen("");
+    }
+  };
+
   useEffect(() => {
     if (tabsBodyRef.current) {
       const height = tabOpen ? `${tabsBodyRef.current.scrollHeight}px` : "0px";
@@ -103,10 +106,16 @@ export default function Header() {
     }
   }, [tabOpen]);
 
-  // Set "HOME" as default active tab and handle the initial tab state
   useEffect(() => {
     setActiveTab("home");
-    setTabOpen(""); // Initially keep the tabs closed
+    setTabOpen("");
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   return (
@@ -131,20 +140,12 @@ export default function Header() {
           <Search onClick={handleSearchModal} size={25} className='relative left-[13.5em] md:left-2 cursor-pointer' stroke="white" />
           <img src={logo} className="h-10 mr-14 -mt-1 md:h-12" alt="Logo" />
           <div className='flex gap-6'>
-          <div className='relative hidden md:block'>
+            <div className='relative hidden md:block'>
               <SquareUser size={25} className='cursor-pointer' stroke="white" onClick={loginRedirect} />
-                <div className={`${users.length === 0 ? 'hidden' : 'block'} absolute -top-1 -right-1 bg-red-700 rounded-full w-3 h-3 flex items-center justify-center text-black text-[12px] border-2 border-white`}>
-                </div>
-              
+              <div className={`${users.length === 0 ? 'hidden' : 'block'} absolute -top-1 -right-1 bg-red-700 rounded-full w-3 h-3 flex items-center justify-center text-black text-[12px] border-2 border-white`} />
             </div>
-
             <div className="relative">
-              <ShoppingCart
-                onClick={handleCart}
-                size={25}
-                stroke="white"
-                className="-mr-2 cursor-pointer"
-              />
+              <ShoppingCart onClick={handleCart} size={25} stroke="white" className="-mr-2 cursor-pointer" />
               <div className="absolute -top-3 -right-3 bg-white rounded-full w-4 h-4 flex items-center justify-center text-black text-[12px] border border-white">
                 {totalItems}
               </div>
@@ -158,11 +159,11 @@ export default function Header() {
                   "bg-white border-2 border-gray-900 shadow-none rounded-none",
               }}
             >
-              {data.map(({ label, value }) => (
+              {data.map(({ label, value, path }) => (
                 <Tab
                   key={value}
                   value={value}
-                  onClick={() => handleTabClick(value)}
+                  onClick={() => handleTabClick(value, path)}
                   className={`text-[13px] tracking-wide ${activeTab === value ? 'text-black' : 'text-white'}`}
                   style={{ color: activeTab === value ? '#000000' : '#ffffff' }}
                 >
@@ -181,8 +182,8 @@ export default function Header() {
         </div>
         {isMobileMenuOpen && (
           <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30'>
-            {data.map(({ label, value }) => (
-              <div key={value} className='py-2 cursor-pointer' onClick={() => handleTabClick(value)}>
+            {data.map(({ label, value, path }) => (
+              <div key={value} className='py-2 cursor-pointer' onClick={() => handleTabClick(value, path)}>
                 {label}
               </div>
             ))}
@@ -195,11 +196,3 @@ export default function Header() {
     </div>
   );
 }
-
-
-
-
-
-
-
-

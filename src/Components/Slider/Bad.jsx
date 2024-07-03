@@ -35,8 +35,8 @@ export default function Bad() {
           autoplay={{ delay: 2000 }} 
         pagination={{ clickable: true }}
         >
-          <SwiperSlide><img src={isMobile ? deoOneMob : deoOne} alt="Slide 1" /></SwiperSlide>
-          <SwiperSlide><img src={isMobile ? deoTwoMob : deoTwo} alt="Slide 2" /></SwiperSlide>
+          <SwiperSlide><img src={isMobile ? deoOneMob : deoOne} alt="Slide 1" className="w-full" /></SwiperSlide>
+          <SwiperSlide><img src={isMobile ? deoTwoMob : deoTwo} alt="Slide 2" className="w-full" /></SwiperSlide>
 
         </Swiper>
     </div>
