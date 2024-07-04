@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import data from '../../Data/data'
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
@@ -51,7 +52,8 @@ export default function LatestArrivalsSlider() {
                 {products.map((product) => (
                     <SwiperSlide key={product.id}>
                         <div className="flex flex-col items-center justify-center text-center">
-                            <img src={product.image && product.image.src || img} className='h-[18em] w-auto' alt={`Slide ${product.id}`} />
+                        <Link to={`/collection/women/product/${product.id}`}>
+                        <img src={product.image && product.image.src || img} className='h-[18em] w-auto' alt={`Slide ${product.id}`} />
                             <div className="lg:text-center mt-4">
                                 <h3>{product.title}</h3>
                                 <div className='flex items-center justify-center'>
@@ -59,7 +61,7 @@ export default function LatestArrivalsSlider() {
                                     <p>Price: {product.variants[0].price || "1000"}</p>
                                 </div>
                                 <p className='text-red-600'>Discount:  { NaN ? "10.00" : ((product.variants[0].compare_at_price - product.variants[0].price) / product.variants[0].compare_at_price * 100).toFixed(2)}% off</p>
-                            </div>
+                            </div> </Link>
                         </div>
                     </SwiperSlide>
                 ))}

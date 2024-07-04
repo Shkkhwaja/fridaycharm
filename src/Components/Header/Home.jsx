@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import MainSlider from '../Slider/MainSlider';
 import SecondPage from './SecondPage/SecondPage';
 import LatestArrivals from './SecondPage/LatestArrivals';
 import JustAdded from './JustAddedBrand/JustAdded';
 import { useNavigate } from 'react-router-dom';
+import HomeMainSkeleton from '../../Components/Skeleton/HomeMainSkeleton'
+
 
 export default function Home() {
   useEffect(() => {
@@ -35,12 +37,25 @@ export default function Home() {
   //   renderToLogin();
   // }, [navigate]);
 
+  const [isLoading, setIsLoading] = useState(true)
+useEffect(() => {
+const time = setTimeout(() => {
+  setIsLoading(false)
+},2000)
+return () => clearTimeout(time) 
+},[])
+
   return (
+    isLoading ? (
+  <HomeMainSkeleton />
+        ) : (
+
     <>
       <MainSlider />
       <SecondPage />
       <LatestArrivals />
       <JustAdded />
     </>
+    )
   );
 }

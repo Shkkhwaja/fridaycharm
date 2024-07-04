@@ -29,8 +29,8 @@ const  handlearrival  = () => {
       </div>
     </div>
 
-    <img src={NewArrival} alt="new Arrival" onClick={handlearrival} className='my-10 hidden cursor-pointer md:block'/>
-<img src={NewArrivalMob} alt="new Arrival" onClick={handlearrival} className='my-10 md:hidden'/>
+    <img src={NewArrival} alt="new Arrival" onClick={handlearrival} className='my-10  hidden cursor-pointer md:block'/>
+<img src={NewArrivalMob} alt="new Arrival" onClick={handlearrival} className='my-10 w-full md:hidden'/>
 
 
     </>
