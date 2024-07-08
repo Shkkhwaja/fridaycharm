@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import data from '../../Data/data'; // Ensure the path to your data is correct
 import fallbackImg from '../../Images/Header_img/Second/Adil.jpeg'; // Add a fallback image
+import WomenSkeleton from '../Skeleton/WomenSkeleton';
 
 const DeodorantPage = () => {
   const [women, setWomen] = useState([]);
@@ -13,6 +14,14 @@ const DeodorantPage = () => {
       behavior: "smooth"
     })
   },[])
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const time = setInterval(() => {
+      setIsLoading(false);
+    }, 2000)
+    return () => clearInterval(time)
+  }, [])
 
   useEffect(() => {
     const totalItems = data.productData.length;
@@ -24,6 +33,7 @@ const DeodorantPage = () => {
   }, []);
 
   return (
+    isLoading ? <WomenSkeleton /> : (
     <div className='flex flex-col items-center'>
       <div className='text-center mb-6'>
         <h2 className='text-[30px] uppercase text-gray-900/90 my-6'>Deodorant</h2>
@@ -52,6 +62,7 @@ const DeodorantPage = () => {
         ))}
       </div>
     </div>
+    )
   );
 };
 

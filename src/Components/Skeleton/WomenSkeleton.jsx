@@ -6,7 +6,7 @@ const WomenSkeleton = () => {
     const skeletonsArray = Array.from({ length: 30 });
 
     return (
-        <div className='h-screen w-full p-4 text-center flex gap-10 flex-wrap'>
+        <div className='h-auto w-full p-[3em] ml-[4em] text-center flex gap-[8em] flex-wrap'>
             <SkeletonTheme baseColor="#bebebe" highlightColor="#f8f8f8" enableAnimation direction='ltr' duration={1.5}>
                 {/* Map over the array to render WomenSkeleton component 20 times */}
                 {skeletonsArray.map((_, index) => (
