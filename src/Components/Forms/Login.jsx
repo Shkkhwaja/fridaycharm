@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, message } from 'antd';
+import { Button, Form, Input, message } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+
 
 const Login = () => {
   useEffect(() => {
@@ -25,6 +27,7 @@ const Login = () => {
       message.error('Invalid username and password')
     }
   }
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
     <>
@@ -61,21 +64,20 @@ const Login = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
+              message: 'Please input your password!',
             },
           ]}
         >
-          <Input
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            type="password"
-            placeholder="Password"
+          <Input.Password
+                      prefix={<LockOutlined className="site-form-item-icon" />}
+
+            placeholder="password"
+            iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
             className="py-2 px-3 border rounded-md w-full"
           />
         </Form.Item>
         <Form.Item className="flex justify-between items-center">
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
+
           <Link to="/forgot/password" className="text-blue-500 hover:text-blue-700">
             Forgot password
           </Link>

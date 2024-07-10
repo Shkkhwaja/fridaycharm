@@ -48,7 +48,7 @@ const NichePage = () => {
                 alt={item.image && item.image.alt ? item.image.alt : "Product Image"}
                 className='h-48 w-48 cursor-pointer'
               />
-              <h2 className='p-2'>{item.title.slice(1, 30)}</h2>
+              <h2 className='p-2 uppercase'>{item.title.slice(1, 30)}</h2>
               <span className='py-2'>{item.rating}</span>
             </Link>
             <div className='flex justify-center items-center gap-2'>

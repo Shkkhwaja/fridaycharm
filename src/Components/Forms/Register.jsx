@@ -1,35 +1,31 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, message } from 'antd';
+import { UserOutlined, UserAddOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Input, message} from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 const Register = () => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 100,
-      left: 0,
-      behavior: "smooth"
-    })
-  },[])
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
-const onFinish = (values) =>{
-  const users = JSON.parse(localStorage.getItem('user')) || []
-  const userExists = users.some((user) => user.username === values.username)
-  
-  if(userExists){
-    message.error('Username already exists')
-    return;
-  }
-  users.push(values);
-  localStorage.setItem('users', JSON.stringify(users))
-  message.success('Registration successful!')
-  navigate('/login')
-}
+  const onFinish = (values) => {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const userExists = users.some((user) => user.username === values.username);
+
+    if (userExists) {
+      message.error('Username already exists');
+      return;
+    }
+
+    users.push(values);
+    localStorage.setItem('users', JSON.stringify(users));
+    message.success('Registration successful!');
+    navigate('/login');
+  };
 
   return (
     <div className="flex justify-center items-center h-screen bg-cyan-50/90">
-          <h2 className='absolute top-[8em] text-2xl md:text-3xl font-bold text-blue-gray-500 tracking-widest uppercase'>Register</h2>
+      <h2 className='absolute top-[8em] text-2xl md:text-3xl font-bold text-blue-gray-500 tracking-widest uppercase'>Register</h2>
       <Form
         name="normal_register"
         className="w-full max-w-xs bg-amber-400/20 p-8 shadow-lg"
@@ -63,8 +59,23 @@ const onFinish = (values) =>{
           ]}
         >
           <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
+            prefix={<UserAddOutlined className="site-form-item-icon" />}
             placeholder="Username"
+            className="py-2 px-3 border rounded-md w-full"
+          />
+        </Form.Item>
+        <Form.Item
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your email!',
+            },
+          ]}
+        >
+          <Input
+            prefix={<MailOutlined className="site-form-item-icon" />}
+            placeholder="Email"
             className="py-2 px-3 border rounded-md w-full"
           />
         </Form.Item>
@@ -73,14 +84,15 @@ const onFinish = (values) =>{
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
+              message: 'Please input your password!',
             },
           ]}
         >
-          <Input
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            type="password"
-            placeholder="Password"
+          <Input.Password
+                      prefix={<LockOutlined className="site-form-item-icon" />}
+
+            placeholder="password"
+            iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
             className="py-2 px-3 border rounded-md w-full"
           />
         </Form.Item>

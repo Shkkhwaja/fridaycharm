@@ -74,7 +74,10 @@ export default function Header() {
   };
 
   const loginRedirect = () => {
-    navigate('/login');
+   if(users.length === 0){ navigate('/login')} 
+   else{
+    navigate('/account')
+   }
   };
 
   const handleTabClick = (value, path) => {
