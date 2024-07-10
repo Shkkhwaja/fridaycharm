@@ -36,7 +36,7 @@ const WomenList = ({ search = '', handleProductClick }) => {
     ) : (
       <div className='flex flex-wrap justify-center'>
         {filteredWomen.length === 0 ? (
-          <p className="text-center mt-4 text-gray-600">No products found.</p>
+          <p className="text-center mt-4 text-gray-600"> <span className='text-red-300 underline text-[15px]'>{search}</span> {" "} No products found.</p>
         ) : (
           filteredWomen.map((item, index) => (
             <div key={index} className='flex flex-col items-center justify-center h-[22em] w-[12em] text-center mx-4 my-8'>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const WomenSkeleton = () => {
