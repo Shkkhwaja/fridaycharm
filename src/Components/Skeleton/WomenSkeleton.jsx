@@ -2,8 +2,16 @@ import React from "react";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const WomenSkeleton = () => {
-    // Create an array with 20 elements
-    const skeletonsArray = Array.from({ length: 30 });
+    useEffect(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        })
+      },[])
+      
+      const skeletonsArray = Array.from({ length: 30 });
+
 
     return (
         <div className='h-auto w-full p-[3em] ml-[4em] text-center flex gap-[8em] flex-wrap'>

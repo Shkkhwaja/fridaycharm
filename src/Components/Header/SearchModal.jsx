@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import WomenList from '../../Section/Women/WomenList';
 
 const SearchModal = ({ onClose }) => {
   const [visible, setVisible] = useState(true);
+  const [search, setSearch] = useState('')
+
 
   const handleClose = () => {
     setVisible(false);
     onClose(); 
   };
+
+const searchValue = (e) => {
+  setSearch(e.target.value)
+}
+
+const handleProductClick = () => {
+  handleClose(); // Close the modal when a product is clicked
+};
 
   return (
     <Modal
@@ -26,6 +36,7 @@ const SearchModal = ({ onClose }) => {
     >
       <div className=" items-center relative">
         <input
+        onChange={searchValue}
           type="search"
           className="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
           placeholder="Search..."
@@ -42,7 +53,7 @@ const SearchModal = ({ onClose }) => {
           `}
         </style>
         <div>
-            <WomenList />
+            <WomenList search={search}  handleProductClick={handleProductClick} />
         </div>
       </div>
     </Modal>
