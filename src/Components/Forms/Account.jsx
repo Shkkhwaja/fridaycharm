@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, Input, Form } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Account() {
   const [user, setUser] = useState({ name: '', username: '', email: '' });
+  const navigate = useNavigate()
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('users'));
     if (userData && userData.length > 0) {
       setUser(userData[0]);
+      navigate('/account')
+    }else{
+      navigate('/login')
     }
   }, []);
 

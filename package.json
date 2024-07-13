@@ -21,6 +21,7 @@
     "framer-motion": "^11.2.12",
     "lucide-react": "^0.376.0",
     "material-icons": "^1.13.12",
+    "preline": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-id-swiper": "^4.0.0",
