@@ -21,6 +21,7 @@ import BathAndBodyCarePage from './Components/HeaderPages/BathAndBodyCarePage';
 import MinianturePage from './Components/HeaderPages/MinianturePage';
 import MenProductDetails from './Section/Men/MenProductDetais';
 import Account from './Components/Forms/Account';
+import ErrorPage from './Components/Error/ErrorPage';
 
 
 const App = () => {
@@ -49,7 +50,8 @@ const App = () => {
     <Route path='page/homefragrance' element={<HomeFragrancePage />} />
     <Route path='page/bathandbodycare' element={<BathAndBodyCarePage />} />
     <Route path='page/minianture' element={<MinianturePage />} />
-    
+    <Route path='*' element={<ErrorPage />} />
+
     </Routes>
     
     
