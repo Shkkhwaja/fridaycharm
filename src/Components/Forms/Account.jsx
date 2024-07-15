@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Input, Form } from 'antd';
+import { Avatar, Input, Form,Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -16,6 +16,15 @@ export default function Account() {
       navigate('/login')
     }
   }, []);
+
+function logoutfun(){
+  navigate('/')
+
+  localStorage.removeItem('currentUser')
+ 
+  
+}
+
 
   return (
     <div className='h-screen flex flex-col justify-center items-center'>
@@ -75,6 +84,12 @@ export default function Account() {
         >
           <Input value={user.email} disabled />
         </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+      <Button type="primary" htmlType="submit" onClick={logoutfun}>
+        Logout
+      </Button>
+    </Form.Item>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const Login = () => {
     if(user){
       localStorage.setItem('currentUser', JSON.stringify(user))
       message.success('Login Successful!')
-      navigate('/')
+      navigate('/account')
     }else{
       message.error('Invalid username and password')
     }
