@@ -15,13 +15,9 @@ export default function LatestArrivalsSlider() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        // Simulating fetching data, replace with actual data fetching logic
         setProducts(data.productData.slice(10,25)); // Assuming data is an array of objects
     }, []);
 
-    useEffect(() => {
-        console.log("Products: ", products);
-    }, [products]);
     return (
         <div className="my-10">
             <Swiper

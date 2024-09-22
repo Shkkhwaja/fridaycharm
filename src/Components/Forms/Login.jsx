@@ -2,6 +2,10 @@ import React, {useEffect} from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, message } from 'antd';
+import { auth } from '../../Firebase/Firebase.js';
+import {signInWithEmailAndPassword} from "firebase/auth"
+import SignInWithGoogle from '../../Firebase/SignInWithGoogle.jsx';
+
 
 const Login = () => {
   useEffect(() => {
@@ -13,17 +17,19 @@ const Login = () => {
   },[])
   const navigate = useNavigate ();
 
-  const onFinish = (values) => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find((user) => user.username === values.username && user.password === values.password)
+  const onFinish = async (values) => {
+   try{ 
+    const {email,password} = values
+    await signInWithEmailAndPassword(auth,email,password)
+    console.log("user Logged in successfully");
+    message.success("user login successfuly")
+    navigate("/profile")
 
-    if(user){
-      localStorage.setItem('currentUser', JSON.stringify(user))
-      message.success('Login Successful!')
-      navigate('/')
-    }else{
-      message.error('Invalid username and password')
-    }
+
+   }catch(err) {
+    console.log("can't able to logged in ",err);
+    message.error("can't able to logged in")
+   }
   }
 
   return (
@@ -42,17 +48,17 @@ const Login = () => {
       >
         
         <Form.Item
-          name="username"
+          name="email"
           rules={[
             {
               required: true,
-              message: 'Please input your Username!',
+              message: 'Please input your Email!',
             },
           ]}
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Username"
+            placeholder="Email"
             className="py-2 px-3 border rounded-md w-full"
           />
         </Form.Item>
@@ -85,9 +91,11 @@ const Login = () => {
             Log in
           </Button>
           <div className="text-center mt-4">
-            Or <Link to="/register" className="text-blue-500 hover:text-blue-700">register now!</Link>
+            no account <Link to="/register" className="text-blue-500 hover:text-blue-700">register now!</Link>
           </div>
         </Form.Item>
+        <SignInWithGoogle />
+
       </Form>
     </div>
 

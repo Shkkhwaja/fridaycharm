@@ -1,0 +1,10 @@
+.skeleton-height {
+    height: 25em;
+}
+
+@media (max-width: 768px) {
+    .skeleton-height {
+        height: 10em;
+        padding: 4em;
+    }
+}

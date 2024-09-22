@@ -21,6 +21,8 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
+import {auth} from "../../Firebase/Firebase"
+
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,6 +33,8 @@ export default function Header() {
   const [activeTab, setActiveTab] = useState("home");
   const [tabOpen, setTabOpen] = useState("");
   const tabsBodyRef = useRef(null);
+  const [user,setUser] = useState()
+
 
   useEffect(() => {
     window.scrollTo({
@@ -39,8 +43,6 @@ export default function Header() {
       behavior: "smooth"
     });
   }, []);
-
-  const users = JSON.parse(localStorage.getItem('currentUser')) || [];
 
   const data = [
     { label: "HOME", value: "home", desc: "", path: "/" },
@@ -73,8 +75,15 @@ export default function Header() {
     setShowCart(false);
   };
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
   const loginRedirect = () => {
-    navigate('/login');
+    user ? navigate("/profile") : navigate("/login")
   };
 
   const handleTabClick = (value, path) => {
@@ -142,7 +151,7 @@ export default function Header() {
           <div className='flex gap-6'>
             <div className='relative hidden md:block'>
               <SquareUser size={25} className='cursor-pointer' stroke="white" onClick={loginRedirect} />
-              <div className={`${users.length === 0 ? 'hidden' : 'block'} absolute -top-1 -right-1 bg-red-700 rounded-full w-3 h-3 flex items-center justify-center text-black text-[12px] border-2 border-white`} />
+              <div className={`${!user ? 'hidden' : 'block'} absolute -top-1 -right-1 bg-red-700 rounded-full w-3 h-3 flex items-center justify-center text-black text-[12px] border-2 border-white`} />
             </div>
             <div className="relative">
               <ShoppingCart onClick={handleCart} size={25} stroke="white" className="-mr-2 cursor-pointer" />

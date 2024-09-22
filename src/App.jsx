@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
@@ -18,10 +18,14 @@ import DesignerPage from './Components/HeaderPages/DesignerPage';
 import HomeFragrancePage from './Components/HeaderPages/HomeFragrancePage';
 import BathAndBodyCarePage from './Components/HeaderPages/BathAndBodyCarePage';
 import MinianturePage from './Components/HeaderPages/MinianturePage';
+import Profile from './Components/Profile/Profile';
+import {auth} from "../src/Firebase/Firebase"
 
 
 const App = () => {
   const location = useLocation();
+
+
 
   return (
 
@@ -31,7 +35,7 @@ const App = () => {
     <Routes key={location.pathname} location={location}>
     <Route path='/' element={<Home />} />
     <Route path='/collection/women' element={<Women />} />
-    <Route path='/login' element={<Login />} />
+    <Route path='/login' element={ <Login />} />
     <Route path='/register' element={<Register />} />
     <Route path='/forgot/password' element={<Forgot />} />
     <Route path='/collection/women/product/:womId' element={<WomenProductDetails />} />
@@ -43,6 +47,7 @@ const App = () => {
     <Route path='page/homefragrance' element={<HomeFragrancePage />} />
     <Route path='page/bathandbodycare' element={<BathAndBodyCarePage />} />
     <Route path='page/minianture' element={<MinianturePage />} />
+    <Route path='/profile' element={<Profile />} />
     
     </Routes>
     

@@ -1,13 +1,15 @@
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import './styles.css'; // Ensure this path is correct
 
 const HomeMainSkeleton = () => {
     return (
-        <div className='h-[80vh] lg:h-[80vh] w-full'>
+        <div className='h-screen w-full p-[5em] md:p-6'>
             <SkeletonTheme baseColor="#ada4a3" highlightColor="#de1f12" enableAnimation direction='ltr' duration={1.5}>
                 <p>
-                    <Skeleton style={{ height: '30em', width: '95%', margin: '1.5em' }} />
+                    <Skeleton className="skeleton-height" />
+                    <Skeleton style={{height: '3em'}} />
                 </p>
             </SkeletonTheme>
         </div>

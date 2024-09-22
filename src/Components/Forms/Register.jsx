@@ -2,6 +2,10 @@ import React, {useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, message } from 'antd';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth,db } from '../../Firebase/Firebase.js';
+import {setDoc, doc} from "firebase/firestore"
+import SignInWithGoogle from '../../Firebase/SignInWithGoogle.jsx';
 
 const Register = () => {
   useEffect(() => {
@@ -13,18 +17,28 @@ const Register = () => {
   },[])
   const navigate = useNavigate();
 
-const onFinish = (values) =>{
-  const users = JSON.parse(localStorage.getItem('user')) || []
-  const userExists = users.some((user) => user.username === values.username)
-  
-  if(userExists){
-    message.error('Username already exists')
-    return;
+const onFinish = async (values) =>{
+  try {
+    const {email,password,username} = values
+
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+  console.log("user register successfully",user)
+  message.success("User registered successfully!");
+  navigate("/login")
+  if(user){
+    await setDoc(doc(db, "Users", user.uid), {
+      email: user.email,
+      username: username
+    })
   }
-  users.push(values);
-  localStorage.setItem('users', JSON.stringify(users))
-  message.success('Registration successful!')
-  navigate('/login')
+
+  }catch(err){
+    console.log("error on firebase",err)
+    message.error("Registration failed. Please try again.");
+
+
+  }
 }
 
   return (
@@ -39,17 +53,17 @@ const onFinish = (values) =>{
         onFinish={onFinish}
       >
         <Form.Item
-          name="name"
+          name="email"
           rules={[
             {
               required: true,
-              message: 'Please input your Name!',
+              message: 'Please input your email!',
             },
           ]}
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Name"
+            placeholder="Email"
             className="py-2 px-3 border rounded-md w-full"
           />
         </Form.Item>
@@ -94,9 +108,10 @@ const onFinish = (values) =>{
             Register
           </Button>
           <div className="text-center mt-4">
-            Or <Link to="/login" className="text-blue-500 hover:text-blue-700">Login now!</Link>
+            Already account <Link to="/login" className="text-blue-500 hover:text-blue-700">Login now!</Link>
           </div>
         </Form.Item>
+        <SignInWithGoogle />
       </Form>
     </div>
   );
