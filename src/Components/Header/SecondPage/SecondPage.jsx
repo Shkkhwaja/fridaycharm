@@ -23,7 +23,8 @@ const  handlearrival  = () => {
           <span className='my-2'>For Women</span>
         </div>
         <div className='flex flex-col items-center'>
-          <img src={Men} alt="Men" className='w-full md:h-[35em] md:w-[35em] shadow-md transform transition-transform duration-500 hover:scale-105' />
+          <Link to={'collection/men'}>
+          <img src={Men} alt="Men" className='w-full md:h-[35em] md:w-[35em] shadow-md transform transition-transform duration-500 hover:scale-105' /></Link>
           <span className='my-2'>For Men</span>
         </div>
       </div>

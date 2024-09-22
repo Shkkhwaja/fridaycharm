@@ -51,7 +51,7 @@ export default function LatestArrivalsSlider() {
                         <Link to={`/collection/women/product/${product.id}`}>
                         <img src={product.image && product.image.src || img} className='h-[18em] w-auto' alt={`Slide ${product.id}`} />
                             <div className="lg:text-center mt-4">
-                                <h3>{product.title}</h3>
+                                <h3 className='p-4 uppercase'>{product.title}</h3>
                                 <div className='flex items-center justify-center'>
                                     <span className="mr-2"><s>Rs. 460</s></span>
                                     <p>Price: {product.variants[0].price || "1000"}</p>

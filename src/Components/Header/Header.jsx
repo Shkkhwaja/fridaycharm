@@ -52,7 +52,8 @@ export default function Header() {
     { label: "DEODORANT", value: "deodorant", desc: <Deodorant />, path: "/page/deodorant" },
     { label: "HOME FRAGRANCE", value: "home-fragrance", desc: <HomeFragrance />, path: "/page/homefragrance" },
     { label: "BATH & BODY CARE", value: "bath-body-care", desc: <BathAndBodyCare />, path: "/page/bathandbodycare" },
-    { label: "MINIATURE", value: "miniature", desc: <Minianture />, path: "/page/minianture" }
+    { label: "MINIATURE", value: "miniature", desc: <Minianture />, path: "/page/minianture" },
+    { label: "ACCOUNT", value: "account", desc: "", path: "/account" }
   ];
 
   const toggleMobileMenu = () => {
@@ -190,14 +191,16 @@ export default function Header() {
           </Tabs>
         </div>
         {isMobileMenuOpen && (
-          <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30'>
-            {data.map(({ label, value, path }) => (
-              <div key={value} className='py-2 cursor-pointer' onClick={() => handleTabClick(value, path)}>
-                {label}
-              </div>
-            ))}
-          </div>
-        )}
+  <div className='md:hidden bg-black text-white text-[14px] uppercase flex flex-col text-center absolute w-full z-30'>
+    {data.map(({ label, value, path }) => (
+      <div key={value} className={`py-2 cursor-pointer ${value === "account" ? 'md:hidden' : 'block'}`} onClick={() => handleTabClick(value, path)}>
+        {label}
+      </div>
+    ))}
+  </div>
+)}
+
+
       </nav>
       {showSearchModal && <SearchModal onClose={handleSearchClose} />}
       {showCart && <AddToCard onClose={handleCartClose} />}

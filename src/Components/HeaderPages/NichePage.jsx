@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import data from '../../Data/data'; // Ensure the path to your data is correct
 import fallbackImg from '../../Images/Header_img/Second/Adil.jpeg'; // Add a fallback image
+import WomenSkeleton from '../Skeleton/WomenSkeleton';
 
 const NichePage = () => {
   const [women, setWomen] = useState([]);
@@ -14,6 +15,15 @@ const NichePage = () => {
 
     setWomen(middleItems);
   }, []);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const time = setInterval(() => {
+      setIsLoading(false);
+    }, 2000)
+    return () => clearInterval(time)
+  }, [])
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -23,6 +33,7 @@ const NichePage = () => {
   },[])
 
   return (
+    isLoading ? <WomenSkeleton /> : (
     <div className='flex flex-col items-center'>
       <div className='text-center mb-6'>
         <h2 className='text-[30px] uppercase text-gray-900/90 my-6'>Niche Perfume</h2>
@@ -37,7 +48,7 @@ const NichePage = () => {
                 alt={item.image && item.image.alt ? item.image.alt : "Product Image"}
                 className='h-48 w-48 cursor-pointer'
               />
-              <h2 className='p-2'>{item.title.slice(1, 30)}</h2>
+              <h2 className='p-2 uppercase'>{item.title.slice(1, 30)}</h2>
               <span className='py-2'>{item.rating}</span>
             </Link>
             <div className='flex justify-center items-center gap-2'>
@@ -51,6 +62,7 @@ const NichePage = () => {
         ))}
       </div>
     </div>
+    )
   );
 };
 

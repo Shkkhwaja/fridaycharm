@@ -19,7 +19,6 @@ import HomeFragrancePage from './Components/HeaderPages/HomeFragrancePage';
 import BathAndBodyCarePage from './Components/HeaderPages/BathAndBodyCarePage';
 import MinianturePage from './Components/HeaderPages/MinianturePage';
 import Profile from './Components/Profile/Profile';
-import {auth} from "../src/Firebase/Firebase"
 
 
 const App = () => {

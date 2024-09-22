@@ -3,14 +3,11 @@ import { Button, Drawer } from "antd";
 import imgMain from "../../Images/Header_img/Second/Adil.jpeg";
 import { useCart } from "react-use-cart";
 import {useNavigate} from "react-router-dom";
-import {auth} from "../../Firebase/Firebase"
 
 
-const AddToCard = ({ onClose }) => {
+const AddToCardMen = ({ onClose }) => {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
-  const [user,setUser] = useState()
-
   const {
     isEmpty,
     totalUniqueItems,
@@ -34,19 +31,12 @@ const handleCloseMain = () => {
   onClose();
 }
 
-useEffect(() => {
-  const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-    setUser(currentUser);
-  });
-  return () => unsubscribe();
-}, []);
-
-const handleClose = () => {
-  !user ? navigate("/login") : navigate("/checkout")
-  setOpen(false);
-  onClose();
-};
-
+  const handleClose = () => {
+    const checkUser = window.localStorage.getItem('currentUser')
+    !checkUser ? navigate('/login') : navigate('/checkout')
+    setOpen(false);
+    onClose();
+  };
 
   return (
     <div className="bg-black">
@@ -130,4 +120,4 @@ const handleClose = () => {
   );
 };
 
-export default AddToCard;
+export default AddToCardMen ;

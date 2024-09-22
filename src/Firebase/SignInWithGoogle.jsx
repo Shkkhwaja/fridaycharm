@@ -26,7 +26,7 @@ export default function SignInWithGoogle() {
     return (
         <div className='h-[3em] flex flex-col text-center justify-center'>
             <p className="text-[15px] text-gray-600">-- Or continue with --</p>
-            <img src={google} alt="Google" onClick={googleLogin} className='cursor-pointer h-[4em]' />
+            <img src={google} alt="Google" onClick={googleLogin} className=' rounded-lg cursor-pointer h-[4em]' />
         </div>
     )
 }
