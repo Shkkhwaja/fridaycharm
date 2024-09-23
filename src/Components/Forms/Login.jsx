@@ -28,7 +28,7 @@ const Login = () => {
       if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         message.success('Login Successful!');
-        navigate('/account');
+        navigate('/profile');
       }
     } catch (err) {
       console.error("Error logging in: ", err);

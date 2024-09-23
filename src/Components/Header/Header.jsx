@@ -53,7 +53,7 @@ export default function Header() {
     { label: "HOME FRAGRANCE", value: "home-fragrance", desc: <HomeFragrance />, path: "/page/homefragrance" },
     { label: "BATH & BODY CARE", value: "bath-body-care", desc: <BathAndBodyCare />, path: "/page/bathandbodycare" },
     { label: "MINIATURE", value: "miniature", desc: <Minianture />, path: "/page/minianture" },
-    { label: "ACCOUNT", value: "account", desc: "", path: "/account" }
+    { label: "ACCOUNT", value: "account", desc: "", path: "/profile" }
   ];
 
   const toggleMobileMenu = () => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { auth, db } from "../../Firebase/Firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { message } from 'antd';
+import { Avatar, Input, Form,Button,message } from 'antd';
 
 export default function Profile() {
     const navigate = useNavigate();
@@ -45,27 +45,60 @@ export default function Profile() {
         <div className="h-screen w-full flex justify-center mt-10">
             {userDetails || userDetailsGoogle ? (
                 <>
-                    <div className="h-32 w-48 bg-blue-400 text-center">
-                        <h2>Profile</h2>
-                        <h3>
-                            Welcome{" "}
-                            <span className="underline text-gray-800 tracking-wide">
-                                {userDetails?.username || userDetailsGoogle?.displayName}
-                            </span>
-                        </h3>
-                        <h3>
-                            Email:{" "}
-                            <span className="underline text-gray-800 text-[13px]">
-                                {userDetails?.email || userDetailsGoogle?.email}
-                            </span>
-                        </h3>
-                        <button
-                            className="w-18 bg-blue-600 hover:bg-red-700 text-white font-bold my-10 py-2 px-4 rounded"
-                            onClick={handleLogout}
-                        >
-                            Logout
-                        </button>
-                    </div>
+                    <div className='h-screen flex flex-col justify-center items-center'>
+      <div className='py-8'>
+        <Avatar
+          size={{
+            xs: 64,
+            sm: 64,
+            md: 80,
+            lg: 100,
+            xl: 120,
+            xxl: 140,
+          }}
+          style={{
+            backgroundColor: 'green',
+            fontSize: '50px'
+          }}
+        >
+          {userDetailsGoogle?.displayName?.charAt(0).toUpperCase() || userDetails?.username?.charAt(0).toUpperCase() || "U"}
+        </Avatar>
+      </div>
+
+      <div className='py-4 uppercase'>
+
+        <Form.Item
+          label="User"
+          className='uppercase'
+          hasFeedback
+          validateStatus="success"
+          style={{
+            width: 'auto',
+            marginLeft: '8px'
+          }}
+        >
+          <Input value={userDetails?.username || userDetailsGoogle?.displayName} disabled />
+        </Form.Item>
+
+        <Form.Item
+          label="Email"
+          className='uppercase'
+          hasFeedback
+          validateStatus="success"
+          style={{
+            width: 'auto'
+          }}
+        >
+          <Input value={userDetails?.email || userDetailsGoogle?.email} disabled />
+        </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+      <Button type="primary" htmlType="submit" onClick={handleLogout}>
+        Logout
+      </Button>
+    </Form.Item>
+      </div>
+    </div>
                 </>
             ) : (
                 <p>Loading...</p>
